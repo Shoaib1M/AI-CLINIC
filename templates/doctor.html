@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doctor Portal - HealthCare Pro</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caprasimo&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Volkhov:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">HealthCare Pro</div>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </nav>
+    </header>
+
+    <section class="doctor-login" id="doctor-login">
+        <div class="login-panel">
+            <div class="icon" aria-label="Doctor">👨‍⚕️</div>
+            <h2>Doctor Login</h2>
+            <p style="margin-bottom: 18px;">Access your patient dashboard.</p>
+            <div class="demo-credentials">
+                <strong>Demo:</strong> Username: <code>doctor1</code> | Password: <code>password</code>
+            </div>
+            <form id="doctor-login-form">
+                <div style="margin-bottom:20px;">
+                    <label for="doctor-username">Username</label>
+                    <input type="text" id="doctor-username" name="username" required>
+                </div>
+                <div style="margin-bottom:10px;">
+                    <label for="doctor-password">Password</label>
+                    <input type="password" id="doctor-password" name="password" required>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Login</button>
+                <div class="error-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <section class="doctor-dashboard" id="doctor-dashboard" style="display: none;">
+        <div class="container">
+            <div class="dashboard-header">
+                <h2>Welcome, <span id="doctor-name">Doctor</span>!</h2>
+                <button onclick="logout()" class="btn btn-secondary">Logout</button>
+            </div>
+            <div class="dashboard-content">
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <h3>Total Patients</h3>
+                        <p id="total-patients">0</p>
+                    </div>
+                </div>
+                <div class="search-bar">
+                    <input type="text" class="patient-search" placeholder="Search patients by name or predicted disease..." style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid #ddd; background-color: rgb(0,0,0,0.2);">
+                </div>
+                <div id="patient-list" class="patient-list">
+                    </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
+<!-- Add this modal to doctor.html -->
+<div id="pdf-modal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100vw; height:100vh; background:rgba(0,0,0,0.5); z-index:10000; align-items:center; justify-content:center;">
+  <div class="modal-content">
+    <h3>Edit Prescription</h3>
+    <form id="pdf-form">
+      <div>
+        <label for="modal-prescription">Prescription (comma separated):</label>
+        <input type="text" id="modal-prescription" name="prescription" style="width:100%;" required>
+      </div>
+      <div style="margin-top:1rem;">
+        <button type="submit" class="btn btn-primary">Generate PDF</button>
+        <button type="button" id="close-pdf-modal" class="btn btn-secondary">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

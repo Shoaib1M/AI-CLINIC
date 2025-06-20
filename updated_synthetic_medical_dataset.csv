@@ -1,0 +1,1001 @@
+Symptom 1,Symptom 2,Symptom 3,Symptom 4,Symptom 5,Disease,Prescription 1,Prescription 2,Prescription 3
+blurred vision,fever,loss of appetite,cough,body ache,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+vomiting,chills,nausea,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+cough,runny nose,sneezing,sore throat,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,sore throat,congestion,diarrhea,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,shortness of breath,cough,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+cough,joint pain,sneezing,fever,shortness of breath,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,fatigue,chills,body ache,fever,Influenza,N/A,N/A,N/A
+congestion,headache,sore throat,runny nose,,Sinusitis,N/A,N/A,N/A
+chills,fever,body ache,fatigue,headache,Influenza,N/A,N/A,N/A
+fever,fatigue,body ache,headache,chills,Influenza,N/A,N/A,N/A
+runny nose,sneezing,sore throat,congestion,headache,Sinusitis,N/A,N/A,N/A
+vomiting,fatigue,headache,nausea,blurred vision,Migraine,N/A,N/A,N/A
+chills,nausea,fever,vomiting,body ache,Malaria,Chloroquine,Artemether,Primaquine
+headache,vomiting,diarrhea,joint pain,nausea,Gastroenteritis,N/A,N/A,N/A
+cough,sneezing,sore throat,congestion,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,chills,cough,fatigue,body ache,Influenza,N/A,N/A,N/A
+chills,headache,fatigue,body ache,fever,Influenza,N/A,N/A,N/A
+joint pain,fever,sore throat,rash,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,congestion,sneezing,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+congestion,sore throat,headache,runny nose,chest pain,Sinusitis,N/A,N/A,N/A
+diarrhea,headache,vomiting,nausea,blurred vision,Migraine,N/A,N/A,N/A
+rash,dizziness,itchy eyes,runny nose,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+nausea,diarrhea,vomiting,fever,,Gastroenteritis,N/A,N/A,N/A
+shortness of breath,cough,fever,congestion,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,sore throat,cough,runny nose,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,body ache,diarrhea,chills,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+sore throat,sneezing,runny nose,cough,diarrhea,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chest pain,cough,fever,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+sore throat,runny nose,shortness of breath,headache,congestion,Sinusitis,N/A,N/A,N/A
+cough,blurred vision,shortness of breath,fever,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+joint pain,headache,fever,rash,nausea,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,rash,joint pain,runny nose,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fatigue,chills,headache,fever,diarrhea,Influenza,N/A,N/A,N/A
+rash,fever,headache,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+body ache,chills,fever,loss of appetite,nausea,Malaria,Chloroquine,Artemether,Primaquine
+nausea,blurred vision,vomiting,headache,,Migraine,N/A,N/A,N/A
+shortness of breath,cough,fatigue,fever,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+headache,blurred vision,nausea,vomiting,body ache,Migraine,N/A,N/A,N/A
+body ache,chills,vomiting,fever,nausea,Malaria,Chloroquine,Artemether,Primaquine
+joint pain,rash,fever,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sore throat,runny nose,headache,congestion,,Sinusitis,N/A,N/A,N/A
+vomiting,loss of appetite,diarrhea,fever,nausea,Gastroenteritis,N/A,N/A,N/A
+fever,rash,joint pain,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+chills,headache,body ache,fever,fatigue,Influenza,N/A,N/A,N/A
+runny nose,congestion,nausea,itchy eyes,chills,Allergic Rhinitis,N/A,N/A,N/A
+chest pain,joint pain,shortness of breath,cough,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+cough,sore throat,congestion,runny nose,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+nausea,vomiting,diarrhea,fever,,Gastroenteritis,N/A,N/A,N/A
+fatigue,fever,sneezing,body ache,headache,Influenza,N/A,N/A,N/A
+headache,body ache,fatigue,chills,fever,Influenza,N/A,N/A,N/A
+runny nose,nausea,headache,loss of appetite,sore throat,Sinusitis,N/A,N/A,N/A
+sore throat,congestion,sneezing,cough,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,diarrhea,fever,nausea,,Gastroenteritis,N/A,N/A,N/A
+runny nose,nausea,congestion,diarrhea,vomiting,Gastroenteritis,N/A,N/A,N/A
+itchy eyes,sneezing,congestion,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+fever,cough,shortness of breath,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,blurred vision,diarrhea,vomiting,headache,Gastroenteritis,N/A,N/A,N/A
+fever,rash,headache,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+diarrhea,nausea,chest pain,congestion,fever,Gastroenteritis,N/A,N/A,N/A
+rash,nausea,blurred vision,headache,vomiting,Migraine,N/A,N/A,N/A
+nausea,rash,fever,headache,joint pain,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+diarrhea,cough,fever,nausea,vomiting,Gastroenteritis,N/A,N/A,N/A
+headache,fatigue,cough,body ache,chills,Influenza,N/A,N/A,N/A
+congestion,itchy eyes,chest pain,sneezing,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+cough,shortness of breath,loss of appetite,fatigue,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+shortness of breath,chest pain,cough,vomiting,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+sore throat,cough,sneezing,runny nose,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+joint pain,dizziness,vomiting,blurred vision,nausea,Migraine,N/A,N/A,N/A
+shortness of breath,runny nose,fever,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+body ache,vomiting,fever,chills,nausea,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,headache,sneezing,congestion,sore throat,Sinusitis,N/A,N/A,N/A
+nausea,blurred vision,headache,vomiting,,Migraine,N/A,N/A,N/A
+body ache,chills,fatigue,vomiting,fever,Influenza,N/A,N/A,N/A
+cough,runny nose,sneezing,sore throat,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chest pain,shortness of breath,fever,cough,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+nausea,fever,diarrhea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+rash,itchy eyes,vomiting,runny nose,congestion,Allergic Rhinitis,N/A,N/A,N/A
+rash,fever,joint pain,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,congestion,sneezing,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+nausea,fever,blurred vision,headache,joint pain,Migraine,N/A,N/A,N/A
+shortness of breath,fever,chest pain,cough,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+nausea,vomiting,headache,shortness of breath,blurred vision,Migraine,N/A,N/A,N/A
+congestion,cough,fatigue,sore throat,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+rash,headache,fever,sore throat,joint pain,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,fatigue,dizziness,body ache,chills,Influenza,N/A,N/A,N/A
+body ache,nausea,fever,vomiting,chills,Malaria,Chloroquine,Artemether,Primaquine
+itchy eyes,runny nose,congestion,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,sore throat,cough,fatigue,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+diarrhea,vomiting,nausea,fever,,Gastroenteritis,N/A,N/A,N/A
+headache,joint pain,fever,rash,loss of appetite,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,nausea,blurred vision,vomiting,sneezing,Migraine,N/A,N/A,N/A
+fever,fatigue,headache,body ache,chills,Influenza,N/A,N/A,N/A
+congestion,body ache,sneezing,runny nose,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+headache,rash,blurred vision,joint pain,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,chills,rash,fever,joint pain,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sneezing,runny nose,itchy eyes,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+fever,fatigue,chest pain,headache,chills,Influenza,N/A,N/A,N/A
+congestion,fever,sore throat,headache,chest pain,Sinusitis,N/A,N/A,N/A
+shortness of breath,fatigue,cough,fever,chest pain,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,runny nose,itchy eyes,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+headache,chills,sneezing,fever,fatigue,Influenza,N/A,N/A,N/A
+cough,fever,shortness of breath,chest pain,nausea,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,joint pain,headache,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+nausea,vomiting,body ache,chills,fever,Malaria,Chloroquine,Artemether,Primaquine
+fatigue,headache,vomiting,chills,body ache,Influenza,N/A,N/A,N/A
+headache,shortness of breath,loss of appetite,nausea,vomiting,Migraine,N/A,N/A,N/A
+sneezing,itchy eyes,congestion,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,chills,body ache,chest pain,rash,Malaria,Chloroquine,Artemether,Primaquine
+cough,fever,dizziness,shortness of breath,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,congestion,fatigue,runny nose,loss of appetite,Sinusitis,N/A,N/A,N/A
+sneezing,sore throat,runny nose,congestion,blurred vision,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chills,headache,fatigue,fever,body ache,Influenza,N/A,N/A,N/A
+headache,rash,joint pain,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,sore throat,headache,congestion,,Sinusitis,N/A,N/A,N/A
+sneezing,congestion,runny nose,itchy eyes,rash,Allergic Rhinitis,N/A,N/A,N/A
+congestion,headache,sore throat,nausea,runny nose,Sinusitis,N/A,N/A,N/A
+joint pain,chest pain,shortness of breath,fever,cough,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+blurred vision,headache,vomiting,nausea,,Migraine,N/A,N/A,N/A
+fatigue,chest pain,chills,fever,body ache,Influenza,N/A,N/A,N/A
+sore throat,congestion,sneezing,runny nose,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,fatigue,fever,shortness of breath,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+rash,vomiting,fever,diarrhea,nausea,Gastroenteritis,N/A,N/A,N/A
+runny nose,congestion,headache,sore throat,,Sinusitis,N/A,N/A,N/A
+rash,joint pain,headache,fatigue,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,congestion,itchy eyes,sneezing,body ache,Allergic Rhinitis,N/A,N/A,N/A
+joint pain,sneezing,rash,headache,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sneezing,cough,runny nose,sore throat,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,headache,joint pain,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+rash,fever,headache,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,runny nose,congestion,chest pain,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,shortness of breath,chills,vomiting,body ache,Malaria,Chloroquine,Artemether,Primaquine
+joint pain,fever,rash,headache,body ache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,sore throat,congestion,body ache,runny nose,Sinusitis,N/A,N/A,N/A
+fever,sneezing,cough,vomiting,diarrhea,Gastroenteritis,N/A,N/A,N/A
+cough,chest pain,fever,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,blurred vision,vomiting,nausea,,Migraine,N/A,N/A,N/A
+diarrhea,runny nose,nausea,fever,vomiting,Gastroenteritis,N/A,N/A,N/A
+headache,nausea,vomiting,blurred vision,,Migraine,N/A,N/A,N/A
+fever,rash,headache,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sneezing,runny nose,congestion,itchy eyes,fatigue,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,sneezing,congestion,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+loss of appetite,shortness of breath,fever,fatigue,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+blurred vision,dizziness,headache,vomiting,nausea,Migraine,N/A,N/A,N/A
+runny nose,sneezing,diarrhea,itchy eyes,congestion,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,cough,fatigue,shortness of breath,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,cough,chest pain,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+joint pain,headache,rash,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fatigue,dizziness,loss of appetite,cough,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+joint pain,rash,headache,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+nausea,fever,sneezing,vomiting,body ache,Malaria,Chloroquine,Artemether,Primaquine
+nausea,sore throat,fever,cough,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+chills,blurred vision,headache,fever,body ache,Influenza,N/A,N/A,N/A
+runny nose,congestion,itchy eyes,headache,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,cough,congestion,itchy eyes,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+congestion,cough,sneezing,runny nose,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chest pain,fever,fatigue,body ache,chills,Influenza,N/A,N/A,N/A
+shortness of breath,cough,fever,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+congestion,vomiting,nausea,fever,diarrhea,Gastroenteritis,N/A,N/A,N/A
+fever,headache,rash,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+congestion,sneezing,runny nose,chills,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+headache,congestion,runny nose,fatigue,sore throat,Sinusitis,N/A,N/A,N/A
+sore throat,congestion,runny nose,headache,joint pain,Sinusitis,N/A,N/A,N/A
+fever,cough,shortness of breath,rash,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+body ache,cough,shortness of breath,sore throat,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,nausea,itchy eyes,sneezing,congestion,Allergic Rhinitis,N/A,N/A,N/A
+cough,vomiting,diarrhea,chills,nausea,Gastroenteritis,N/A,N/A,N/A
+fatigue,headache,body ache,fever,chills,Influenza,N/A,N/A,N/A
+vomiting,fever,nausea,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+itchy eyes,congestion,sneezing,runny nose,fatigue,Allergic Rhinitis,N/A,N/A,N/A
+sore throat,runny nose,sneezing,cough,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+headache,fever,joint pain,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,sneezing,sore throat,blurred vision,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+blurred vision,vomiting,nausea,fever,chills,Malaria,Chloroquine,Artemether,Primaquine
+congestion,headache,sore throat,runny nose,,Sinusitis,N/A,N/A,N/A
+dizziness,itchy eyes,sneezing,runny nose,congestion,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,headache,rash,congestion,blurred vision,Migraine,N/A,N/A,N/A
+fever,vomiting,body ache,nausea,chills,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,headache,congestion,sore throat,,Sinusitis,N/A,N/A,N/A
+vomiting,headache,blurred vision,nausea,,Migraine,N/A,N/A,N/A
+rash,headache,fever,joint pain,runny nose,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+loss of appetite,shortness of breath,fever,cough,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,loss of appetite,vomiting,nausea,body ache,Malaria,Chloroquine,Artemether,Primaquine
+joint pain,fever,rash,headache,fatigue,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+blurred vision,vomiting,congestion,nausea,headache,Migraine,N/A,N/A,N/A
+headache,rash,joint pain,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,body ache,nausea,chills,fever,Malaria,Chloroquine,Artemether,Primaquine
+shortness of breath,cough,loss of appetite,fatigue,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+chest pain,shortness of breath,fever,cough,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+cough,shortness of breath,fatigue,fever,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+headache,fever,joint pain,sneezing,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+itchy eyes,congestion,sneezing,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+fever,vomiting,diarrhea,nausea,,Gastroenteritis,N/A,N/A,N/A
+nausea,chest pain,fever,vomiting,diarrhea,Gastroenteritis,N/A,N/A,N/A
+headache,chills,fever,fatigue,body ache,Influenza,N/A,N/A,N/A
+cough,rash,chest pain,shortness of breath,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,dizziness,shortness of breath,cough,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+blurred vision,runny nose,cough,congestion,headache,Sinusitis,N/A,N/A,N/A
+vomiting,diarrhea,nausea,fever,blurred vision,Gastroenteritis,N/A,N/A,N/A
+runny nose,itchy eyes,congestion,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+fatigue,headache,chills,fever,body ache,Influenza,N/A,N/A,N/A
+cough,chest pain,loss of appetite,congestion,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+joint pain,chills,fever,headache,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,joint pain,congestion,rash,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+shortness of breath,cough,blurred vision,chest pain,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,shortness of breath,cough,chills,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+vomiting,nausea,fever,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+shortness of breath,fever,chest pain,fatigue,cough,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+rash,fever,joint pain,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,fatigue,headache,chills,body ache,Influenza,N/A,N/A,N/A
+sneezing,headache,blurred vision,nausea,joint pain,Migraine,N/A,N/A,N/A
+nausea,diarrhea,vomiting,fever,sore throat,Gastroenteritis,N/A,N/A,N/A
+vomiting,fever,nausea,headache,body ache,Malaria,Chloroquine,Artemether,Primaquine
+cough,shortness of breath,fatigue,fever,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+blurred vision,nausea,headache,vomiting,,Migraine,N/A,N/A,N/A
+shortness of breath,fever,loss of appetite,fatigue,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,vomiting,rash,diarrhea,fever,Gastroenteritis,N/A,N/A,N/A
+sneezing,sore throat,congestion,cough,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+cough,sore throat,runny nose,congestion,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+blurred vision,loss of appetite,fever,shortness of breath,runny nose,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+blurred vision,nausea,headache,vomiting,,Migraine,N/A,N/A,N/A
+body ache,fever,fatigue,headache,chills,Influenza,N/A,N/A,N/A
+congestion,headache,body ache,sore throat,runny nose,Sinusitis,N/A,N/A,N/A
+chest pain,congestion,headache,sore throat,runny nose,Sinusitis,N/A,N/A,N/A
+sneezing,congestion,runny nose,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+congestion,itchy eyes,fever,sneezing,diarrhea,Allergic Rhinitis,N/A,N/A,N/A
+headache,blurred vision,dizziness,nausea,vomiting,Migraine,N/A,N/A,N/A
+headache,shortness of breath,cough,chest pain,sore throat,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+chest pain,cough,shortness of breath,fever,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+sore throat,vomiting,runny nose,congestion,chest pain,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,congestion,sneezing,sore throat,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+diarrhea,fatigue,dizziness,loss of appetite,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fatigue,body ache,fever,headache,chills,Influenza,N/A,N/A,N/A
+joint pain,headache,fatigue,chills,fever,Influenza,N/A,N/A,N/A
+itchy eyes,congestion,runny nose,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+headache,body ache,chills,fatigue,fever,Influenza,N/A,N/A,N/A
+vomiting,chills,nausea,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+sore throat,cough,chest pain,runny nose,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+blurred vision,headache,nausea,vomiting,,Migraine,N/A,N/A,N/A
+chills,nausea,vomiting,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+sore throat,fever,cough,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+diarrhea,fever,vomiting,nausea,,Gastroenteritis,N/A,N/A,N/A
+rash,joint pain,headache,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+blurred vision,headache,dizziness,nausea,vomiting,Migraine,N/A,N/A,N/A
+headache,vomiting,loss of appetite,chest pain,blurred vision,Migraine,N/A,N/A,N/A
+shortness of breath,vomiting,headache,nausea,body ache,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,sore throat,congestion,headache,,Sinusitis,N/A,N/A,N/A
+loss of appetite,cough,shortness of breath,rash,runny nose,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,congestion,runny nose,fatigue,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+headache,sore throat,congestion,nausea,runny nose,Sinusitis,N/A,N/A,N/A
+runny nose,sneezing,congestion,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+cough,fatigue,fever,shortness of breath,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+rash,headache,joint pain,fever,congestion,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+nausea,diarrhea,vomiting,fever,,Gastroenteritis,N/A,N/A,N/A
+fever,loss of appetite,shortness of breath,fatigue,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fatigue,cough,fever,shortness of breath,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+runny nose,sneezing,chills,itchy eyes,congestion,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,nausea,blurred vision,headache,,Migraine,N/A,N/A,N/A
+fever,nausea,body ache,vomiting,chills,Malaria,Chloroquine,Artemether,Primaquine
+sneezing,congestion,itchy eyes,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+rash,joint pain,fever,headache,dizziness,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,cough,chest pain,shortness of breath,joint pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+nausea,headache,vomiting,blurred vision,,Migraine,N/A,N/A,N/A
+blurred vision,headache,loss of appetite,vomiting,nausea,Migraine,N/A,N/A,N/A
+nausea,fever,headache,diarrhea,dizziness,Gastroenteritis,N/A,N/A,N/A
+sore throat,congestion,sneezing,runny nose,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+dizziness,fever,headache,chest pain,fatigue,Influenza,N/A,N/A,N/A
+nausea,fever,body ache,vomiting,sneezing,Malaria,Chloroquine,Artemether,Primaquine
+loss of appetite,sore throat,blurred vision,runny nose,congestion,Sinusitis,N/A,N/A,N/A
+runny nose,congestion,sore throat,headache,,Sinusitis,N/A,N/A,N/A
+chest pain,congestion,cough,rash,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+sneezing,joint pain,runny nose,cough,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+congestion,rash,sneezing,sore throat,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chills,sore throat,chest pain,fever,nausea,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,sneezing,headache,sore throat,congestion,Sinusitis,N/A,N/A,N/A
+congestion,itchy eyes,sore throat,runny nose,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+body ache,nausea,fever,chills,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+fatigue,headache,body ache,chills,fever,Influenza,N/A,N/A,N/A
+runny nose,sneezing,congestion,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+body ache,fatigue,chills,fever,headache,Influenza,N/A,N/A,N/A
+fever,body ache,fatigue,dizziness,headache,Influenza,N/A,N/A,N/A
+nausea,runny nose,congestion,cough,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,sneezing,congestion,cough,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,sneezing,congestion,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,headache,blurred vision,nausea,,Migraine,N/A,N/A,N/A
+vomiting,body ache,chills,fever,nausea,Malaria,Chloroquine,Artemether,Primaquine
+nausea,fever,vomiting,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+vomiting,fever,nausea,shortness of breath,chills,Malaria,Chloroquine,Artemether,Primaquine
+diarrhea,fever,vomiting,nausea,,Gastroenteritis,N/A,N/A,N/A
+runny nose,sore throat,congestion,headache,fever,Sinusitis,N/A,N/A,N/A
+cough,fever,blurred vision,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+vomiting,fever,nausea,diarrhea,fatigue,Gastroenteritis,N/A,N/A,N/A
+fatigue,body ache,chills,fever,headache,Influenza,N/A,N/A,N/A
+blurred vision,headache,vomiting,nausea,,Migraine,N/A,N/A,N/A
+cough,fever,shortness of breath,chest pain,body ache,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,vomiting,diarrhea,nausea,,Gastroenteritis,N/A,N/A,N/A
+fever,nausea,diarrhea,joint pain,vomiting,Gastroenteritis,N/A,N/A,N/A
+sore throat,cough,congestion,runny nose,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,nausea,runny nose,blurred vision,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+chills,headache,fatigue,body ache,loss of appetite,Influenza,N/A,N/A,N/A
+headache,runny nose,sneezing,sore throat,congestion,Sinusitis,N/A,N/A,N/A
+diarrhea,nausea,fever,vomiting,,Gastroenteritis,N/A,N/A,N/A
+chills,vomiting,nausea,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+headache,shortness of breath,fatigue,fever,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+congestion,blurred vision,itchy eyes,sneezing,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+cough,diarrhea,fever,headache,nausea,Gastroenteritis,N/A,N/A,N/A
+chills,nausea,vomiting,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+rash,runny nose,joint pain,fever,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,chest pain,shortness of breath,fever,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,rash,cough,shortness of breath,sneezing,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,vomiting,chills,sore throat,nausea,Malaria,Chloroquine,Artemether,Primaquine
+shortness of breath,cough,loss of appetite,fever,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,congestion,cough,body ache,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,runny nose,headache,joint pain,congestion,Sinusitis,N/A,N/A,N/A
+headache,blurred vision,vomiting,joint pain,nausea,Migraine,N/A,N/A,N/A
+loss of appetite,fever,vomiting,fatigue,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+joint pain,rash,headache,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,fever,diarrhea,nausea,,Gastroenteritis,N/A,N/A,N/A
+loss of appetite,fever,fatigue,cough,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,body ache,chills,fatigue,headache,Influenza,N/A,N/A,N/A
+body ache,vomiting,chills,fever,joint pain,Malaria,Chloroquine,Artemether,Primaquine
+headache,fever,joint pain,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fatigue,shortness of breath,fever,cough,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+dizziness,nausea,blurred vision,vomiting,headache,Migraine,N/A,N/A,N/A
+blurred vision,vomiting,runny nose,nausea,loss of appetite,Migraine,N/A,N/A,N/A
+chills,blurred vision,body ache,headache,fever,Influenza,N/A,N/A,N/A
+sneezing,runny nose,congestion,sore throat,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,body ache,blurred vision,sneezing,nausea,Migraine,N/A,N/A,N/A
+joint pain,rash,vomiting,fever,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,chest pain,body ache,headache,blurred vision,Migraine,N/A,N/A,N/A
+chills,body ache,fatigue,headache,fever,Influenza,N/A,N/A,N/A
+fever,nausea,vomiting,body ache,chills,Malaria,Chloroquine,Artemether,Primaquine
+headache,runny nose,sore throat,congestion,,Sinusitis,N/A,N/A,N/A
+sore throat,headache,runny nose,congestion,,Sinusitis,N/A,N/A,N/A
+runny nose,sore throat,congestion,itchy eyes,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+headache,fatigue,body ache,fever,chills,Influenza,N/A,N/A,N/A
+sore throat,congestion,headache,runny nose,,Sinusitis,N/A,N/A,N/A
+shortness of breath,cough,fever,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fatigue,congestion,chills,body ache,fever,Influenza,N/A,N/A,N/A
+cough,headache,loss of appetite,fatigue,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,blurred vision,headache,vomiting,diarrhea,Migraine,N/A,N/A,N/A
+shortness of breath,cough,fever,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+cough,chills,headache,body ache,fever,Influenza,N/A,N/A,N/A
+vomiting,headache,fever,chills,body ache,Malaria,Chloroquine,Artemether,Primaquine
+nausea,blurred vision,runny nose,vomiting,fatigue,Migraine,N/A,N/A,N/A
+shortness of breath,loss of appetite,cough,chills,joint pain,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+chest pain,fever,shortness of breath,fatigue,cough,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,sneezing,itchy eyes,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+fever,nausea,rash,joint pain,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+joint pain,fever,rash,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+diarrhea,sneezing,congestion,itchy eyes,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,headache,sore throat,sneezing,congestion,Sinusitis,N/A,N/A,N/A
+loss of appetite,fatigue,cough,shortness of breath,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+joint pain,rash,body ache,headache,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+nausea,diarrhea,vomiting,fever,headache,Gastroenteritis,N/A,N/A,N/A
+itchy eyes,runny nose,congestion,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,rash,fever,body ache,nausea,Gastroenteritis,N/A,N/A,N/A
+itchy eyes,fatigue,sneezing,congestion,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+fever,rash,joint pain,nausea,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+joint pain,nausea,fever,rash,dizziness,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,body ache,nausea,vomiting,headache,Malaria,Chloroquine,Artemether,Primaquine
+dizziness,joint pain,chills,fever,nausea,Malaria,Chloroquine,Artemether,Primaquine
+vomiting,headache,nausea,fever,diarrhea,Gastroenteritis,N/A,N/A,N/A
+nausea,vomiting,fever,blurred vision,chills,Malaria,Chloroquine,Artemether,Primaquine
+sore throat,congestion,runny nose,headache,chills,Sinusitis,N/A,N/A,N/A
+fever,fatigue,cough,body ache,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sore throat,runny nose,congestion,headache,,Sinusitis,N/A,N/A,N/A
+chest pain,shortness of breath,cough,fever,sore throat,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+nausea,vomiting,headache,blurred vision,,Migraine,N/A,N/A,N/A
+nausea,vomiting,congestion,blurred vision,headache,Migraine,N/A,N/A,N/A
+congestion,fatigue,itchy eyes,runny nose,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+shortness of breath,fever,cough,chills,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,sore throat,congestion,runny nose,,Sinusitis,N/A,N/A,N/A
+fatigue,loss of appetite,chest pain,shortness of breath,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,congestion,headache,chills,body ache,Influenza,N/A,N/A,N/A
+chest pain,fever,headache,body ache,fatigue,Influenza,N/A,N/A,N/A
+headache,joint pain,fever,blurred vision,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,diarrhea,fever,nausea,,Gastroenteritis,N/A,N/A,N/A
+diarrhea,itchy eyes,congestion,sneezing,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+body ache,chills,vomiting,fever,nausea,Malaria,Chloroquine,Artemether,Primaquine
+loss of appetite,cough,fever,shortness of breath,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+rash,joint pain,headache,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sneezing,itchy eyes,congestion,runny nose,headache,Allergic Rhinitis,N/A,N/A,N/A
+chills,body ache,chest pain,headache,fever,Influenza,N/A,N/A,N/A
+runny nose,itchy eyes,joint pain,rash,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+headache,congestion,sore throat,runny nose,,Sinusitis,N/A,N/A,N/A
+body ache,fatigue,chills,headache,fever,Influenza,N/A,N/A,N/A
+joint pain,chest pain,shortness of breath,cough,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+chills,body ache,nausea,joint pain,fever,Malaria,Chloroquine,Artemether,Primaquine
+shortness of breath,fever,loss of appetite,cough,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sore throat,runny nose,sneezing,cough,loss of appetite,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+congestion,sneezing,itchy eyes,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+shortness of breath,fever,cough,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+diarrhea,nausea,vomiting,fever,,Gastroenteritis,N/A,N/A,N/A
+fever,shortness of breath,loss of appetite,body ache,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+shortness of breath,body ache,chest pain,cough,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+rash,runny nose,dizziness,congestion,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,loss of appetite,cough,shortness of breath,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+cough,shortness of breath,fever,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,chills,fever,body ache,nausea,Malaria,Chloroquine,Artemether,Primaquine
+headache,runny nose,sore throat,congestion,dizziness,Sinusitis,N/A,N/A,N/A
+nausea,body ache,vomiting,fever,chills,Malaria,Chloroquine,Artemether,Primaquine
+nausea,vomiting,blurred vision,diarrhea,runny nose,Gastroenteritis,N/A,N/A,N/A
+rash,fever,headache,diarrhea,joint pain,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+nausea,headache,vomiting,blurred vision,,Migraine,N/A,N/A,N/A
+diarrhea,fever,vomiting,congestion,nausea,Gastroenteritis,N/A,N/A,N/A
+fever,headache,joint pain,rash,sore throat,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,congestion,sneezing,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+sneezing,runny nose,rash,loss of appetite,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+shortness of breath,fever,cough,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+vomiting,diarrhea,nausea,fever,runny nose,Gastroenteritis,N/A,N/A,N/A
+sore throat,nausea,runny nose,cough,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,nausea,vomiting,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+cough,fever,shortness of breath,headache,blurred vision,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,loss of appetite,fatigue,shortness of breath,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+chills,body ache,fever,headache,joint pain,Influenza,N/A,N/A,N/A
+joint pain,headache,vomiting,nausea,cough,Migraine,N/A,N/A,N/A
+cough,blurred vision,loss of appetite,fatigue,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,itchy eyes,chills,congestion,blurred vision,Allergic Rhinitis,N/A,N/A,N/A
+sneezing,itchy eyes,headache,runny nose,shortness of breath,Allergic Rhinitis,N/A,N/A,N/A
+headache,sore throat,congestion,runny nose,,Sinusitis,N/A,N/A,N/A
+chest pain,rash,sneezing,joint pain,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+loss of appetite,sneezing,cough,sore throat,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,chest pain,itchy eyes,sneezing,congestion,Allergic Rhinitis,N/A,N/A,N/A
+fever,shortness of breath,loss of appetite,chest pain,cough,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,headache,congestion,sore throat,,Sinusitis,N/A,N/A,N/A
+itchy eyes,runny nose,sneezing,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+fatigue,chills,headache,body ache,fever,Influenza,N/A,N/A,N/A
+rash,shortness of breath,headache,joint pain,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,sneezing,itchy eyes,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+headache,nausea,congestion,runny nose,sneezing,Sinusitis,N/A,N/A,N/A
+shortness of breath,blurred vision,fatigue,fever,runny nose,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,vomiting,nausea,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+headache,fever,rash,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sneezing,sore throat,congestion,runny nose,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+cough,fatigue,fever,loss of appetite,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+congestion,runny nose,sore throat,headache,,Sinusitis,N/A,N/A,N/A
+loss of appetite,dizziness,headache,rash,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+congestion,runny nose,sneezing,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+loss of appetite,sore throat,congestion,runny nose,headache,Sinusitis,N/A,N/A,N/A
+blurred vision,nausea,headache,vomiting,,Migraine,N/A,N/A,N/A
+body ache,fever,fatigue,shortness of breath,chills,Influenza,N/A,N/A,N/A
+loss of appetite,cough,fever,shortness of breath,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,itchy eyes,runny nose,chills,fatigue,Allergic Rhinitis,N/A,N/A,N/A
+shortness of breath,cough,fever,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+vomiting,headache,blurred vision,nausea,,Migraine,N/A,N/A,N/A
+sneezing,itchy eyes,runny nose,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+loss of appetite,fever,shortness of breath,cough,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+blurred vision,vomiting,headache,cough,nausea,Migraine,N/A,N/A,N/A
+rash,joint pain,headache,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+rash,headache,joint pain,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+joint pain,headache,rash,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+blurred vision,sneezing,headache,nausea,shortness of breath,Migraine,N/A,N/A,N/A
+shortness of breath,cough,chest pain,fatigue,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+body ache,headache,fever,fatigue,chills,Influenza,N/A,N/A,N/A
+shortness of breath,chest pain,cough,fever,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+sore throat,sneezing,congestion,cough,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chills,vomiting,body ache,nausea,fever,Malaria,Chloroquine,Artemether,Primaquine
+cough,chest pain,sore throat,shortness of breath,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,vomiting,nausea,diarrhea,fever,Gastroenteritis,N/A,N/A,N/A
+vomiting,chills,nausea,diarrhea,fever,Gastroenteritis,N/A,N/A,N/A
+nausea,blurred vision,headache,runny nose,vomiting,Migraine,N/A,N/A,N/A
+fever,body ache,nausea,fatigue,chills,Influenza,N/A,N/A,N/A
+runny nose,loss of appetite,cough,sore throat,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+cough,loss of appetite,chills,body ache,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,cough,joint pain,rash,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,vomiting,loss of appetite,chills,nausea,Malaria,Chloroquine,Artemether,Primaquine
+fever,fatigue,headache,body ache,chills,Influenza,N/A,N/A,N/A
+vomiting,body ache,fever,chills,nausea,Malaria,Chloroquine,Artemether,Primaquine
+chest pain,shortness of breath,cough,fever,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+chest pain,diarrhea,vomiting,nausea,fever,Gastroenteritis,N/A,N/A,N/A
+headache,fever,vomiting,fatigue,chills,Influenza,N/A,N/A,N/A
+joint pain,headache,fever,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,chest pain,fever,shortness of breath,nausea,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,headache,sore throat,runny nose,,Sinusitis,N/A,N/A,N/A
+headache,vomiting,nausea,blurred vision,sneezing,Migraine,N/A,N/A,N/A
+runny nose,blurred vision,sore throat,rash,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+shortness of breath,fatigue,congestion,loss of appetite,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+blurred vision,fever,chest pain,shortness of breath,cough,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+diarrhea,fever,nausea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+chills,vomiting,nausea,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+chills,sore throat,body ache,vomiting,nausea,Malaria,Chloroquine,Artemether,Primaquine
+chills,headache,nausea,fatigue,loss of appetite,Influenza,N/A,N/A,N/A
+sneezing,vomiting,headache,shortness of breath,blurred vision,Migraine,N/A,N/A,N/A
+nausea,vomiting,cough,diarrhea,sneezing,Gastroenteritis,N/A,N/A,N/A
+diarrhea,congestion,chest pain,sore throat,headache,Sinusitis,N/A,N/A,N/A
+congestion,rash,itchy eyes,runny nose,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+fever,vomiting,nausea,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+fever,sore throat,fatigue,loss of appetite,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+runny nose,congestion,itchy eyes,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,sneezing,congestion,cough,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,rash,congestion,headache,joint pain,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+rash,headache,joint pain,fatigue,cough,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+rash,fever,headache,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+chills,fever,body ache,fatigue,dizziness,Influenza,N/A,N/A,N/A
+chills,body ache,runny nose,fever,sneezing,Influenza,N/A,N/A,N/A
+nausea,vomiting,chest pain,fever,body ache,Malaria,Chloroquine,Artemether,Primaquine
+vomiting,headache,rash,fever,joint pain,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+rash,headache,joint pain,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,chills,headache,sore throat,congestion,Sinusitis,N/A,N/A,N/A
+fever,loss of appetite,shortness of breath,headache,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+diarrhea,fever,nausea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+body ache,fatigue,fever,headache,chills,Influenza,N/A,N/A,N/A
+sneezing,fever,sore throat,cough,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+cough,fatigue,blurred vision,loss of appetite,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+body ache,headache,chills,fever,fatigue,Influenza,N/A,N/A,N/A
+congestion,runny nose,sore throat,headache,,Sinusitis,N/A,N/A,N/A
+vomiting,nausea,diarrhea,fever,,Gastroenteritis,N/A,N/A,N/A
+runny nose,sneezing,congestion,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+cough,shortness of breath,fever,fatigue,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,fever,body ache,dizziness,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+congestion,itchy eyes,sneezing,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+itchy eyes,sneezing,congestion,shortness of breath,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+sneezing,cough,runny nose,sore throat,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,nausea,body ache,fever,chills,Malaria,Chloroquine,Artemether,Primaquine
+rash,headache,fever,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,runny nose,cough,sneezing,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+sore throat,fever,loss of appetite,vomiting,diarrhea,Gastroenteritis,N/A,N/A,N/A
+congestion,sneezing,runny nose,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+chills,fatigue,headache,body ache,fever,Influenza,N/A,N/A,N/A
+fatigue,fever,cough,loss of appetite,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,congestion,runny nose,fever,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+loss of appetite,fever,body ache,chills,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+nausea,headache,chills,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+joint pain,headache,fever,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sore throat,runny nose,congestion,nausea,headache,Sinusitis,N/A,N/A,N/A
+fever,body ache,chills,runny nose,fatigue,Influenza,N/A,N/A,N/A
+joint pain,fever,headache,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+nausea,body ache,fever,chills,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+nausea,fever,chills,vomiting,body ache,Malaria,Chloroquine,Artemether,Primaquine
+congestion,runny nose,itchy eyes,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,chills,chest pain,nausea,headache,Migraine,N/A,N/A,N/A
+runny nose,sneezing,congestion,body ache,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+chills,body ache,headache,fever,fatigue,Influenza,N/A,N/A,N/A
+cough,fever,shortness of breath,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,body ache,headache,cough,chills,Influenza,N/A,N/A,N/A
+headache,chills,body ache,fatigue,fever,Influenza,N/A,N/A,N/A
+fever,shortness of breath,chest pain,cough,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+vomiting,nausea,blurred vision,headache,sore throat,Migraine,N/A,N/A,N/A
+cough,runny nose,sneezing,congestion,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+joint pain,headache,runny nose,sore throat,congestion,Sinusitis,N/A,N/A,N/A
+sneezing,diarrhea,runny nose,itchy eyes,congestion,Allergic Rhinitis,N/A,N/A,N/A
+blurred vision,headache,vomiting,runny nose,nausea,Migraine,N/A,N/A,N/A
+headache,congestion,runny nose,sore throat,,Sinusitis,N/A,N/A,N/A
+congestion,joint pain,itchy eyes,sneezing,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+headache,congestion,sneezing,runny nose,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+cough,loss of appetite,shortness of breath,fever,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,vomiting,shortness of breath,body ache,chills,Malaria,Chloroquine,Artemether,Primaquine
+chest pain,cough,fever,shortness of breath,diarrhea,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,congestion,headache,cough,sore throat,Sinusitis,N/A,N/A,N/A
+runny nose,sneezing,itchy eyes,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+shortness of breath,fatigue,loss of appetite,cough,vomiting,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,nausea,chills,vomiting,dizziness,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,itchy eyes,congestion,blurred vision,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+loss of appetite,congestion,cough,shortness of breath,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+cough,fever,shortness of breath,fatigue,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,cough,fever,shortness of breath,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,blurred vision,chest pain,runny nose,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+shortness of breath,cough,chest pain,fever,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,cough,loss of appetite,fatigue,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+blurred vision,itchy eyes,sneezing,runny nose,congestion,Allergic Rhinitis,N/A,N/A,N/A
+nausea,vomiting,fever,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+joint pain,fever,chest pain,headache,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,nausea,headache,blurred vision,,Migraine,N/A,N/A,N/A
+joint pain,headache,fever,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,fatigue,headache,body ache,chills,Influenza,N/A,N/A,N/A
+runny nose,congestion,headache,vomiting,sore throat,Sinusitis,N/A,N/A,N/A
+cough,fever,loss of appetite,shortness of breath,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+itchy eyes,congestion,runny nose,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+fever,nausea,diarrhea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+fatigue,fever,headache,body ache,chills,Influenza,N/A,N/A,N/A
+headache,congestion,joint pain,rash,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,sneezing,runny nose,congestion,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+headache,nausea,vomiting,blurred vision,,Migraine,N/A,N/A,N/A
+fatigue,diarrhea,body ache,chest pain,headache,Influenza,N/A,N/A,N/A
+cough,loss of appetite,congestion,sneezing,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,headache,nausea,blurred vision,,Migraine,N/A,N/A,N/A
+runny nose,fatigue,cough,congestion,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+sore throat,runny nose,congestion,headache,,Sinusitis,N/A,N/A,N/A
+cough,sneezing,sore throat,runny nose,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+sore throat,vomiting,nausea,headache,blurred vision,Migraine,N/A,N/A,N/A
+chills,headache,fatigue,chest pain,body ache,Influenza,N/A,N/A,N/A
+cough,loss of appetite,fever,shortness of breath,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sore throat,cough,sneezing,congestion,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,congestion,sneezing,vomiting,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+chest pain,shortness of breath,fever,cough,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,diarrhea,sneezing,itchy eyes,congestion,Allergic Rhinitis,N/A,N/A,N/A
+blurred vision,headache,nausea,vomiting,body ache,Migraine,N/A,N/A,N/A
+vomiting,diarrhea,nausea,fever,,Gastroenteritis,N/A,N/A,N/A
+congestion,sore throat,blurred vision,headache,cough,Sinusitis,N/A,N/A,N/A
+shortness of breath,loss of appetite,headache,fatigue,sneezing,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,fever,diarrhea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+runny nose,sneezing,congestion,sore throat,nausea,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+blurred vision,nausea,vomiting,headache,,Migraine,N/A,N/A,N/A
+fever,chills,nausea,body ache,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+fever,fatigue,loss of appetite,shortness of breath,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+joint pain,headache,fever,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+nausea,fever,diarrhea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+fever,vomiting,nausea,shortness of breath,diarrhea,Gastroenteritis,N/A,N/A,N/A
+body ache,chills,fever,headache,fatigue,Influenza,N/A,N/A,N/A
+chills,body ache,headache,rash,fever,Influenza,N/A,N/A,N/A
+loss of appetite,sore throat,congestion,runny nose,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fatigue,cough,shortness of breath,fever,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+chills,congestion,headache,runny nose,sore throat,Sinusitis,N/A,N/A,N/A
+fever,diarrhea,nausea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+vomiting,fever,body ache,nausea,chills,Malaria,Chloroquine,Artemether,Primaquine
+diarrhea,fever,nausea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+nausea,fever,cough,vomiting,diarrhea,Gastroenteritis,N/A,N/A,N/A
+congestion,sneezing,itchy eyes,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+blurred vision,vomiting,headache,nausea,,Migraine,N/A,N/A,N/A
+sore throat,runny nose,cough,congestion,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,diarrhea,sneezing,body ache,fatigue,Influenza,N/A,N/A,N/A
+cough,fever,chest pain,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,vomiting,rash,nausea,blurred vision,Migraine,N/A,N/A,N/A
+itchy eyes,blurred vision,sneezing,congestion,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+chills,nausea,body ache,fever,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+nausea,vomiting,fever,body ache,chills,Malaria,Chloroquine,Artemether,Primaquine
+headache,chills,fatigue,body ache,fever,Influenza,N/A,N/A,N/A
+headache,nausea,runny nose,sore throat,congestion,Sinusitis,N/A,N/A,N/A
+fever,vomiting,nausea,diarrhea,chest pain,Gastroenteritis,N/A,N/A,N/A
+headache,fatigue,fever,body ache,chills,Influenza,N/A,N/A,N/A
+joint pain,fever,rash,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,runny nose,congestion,sore throat,,Sinusitis,N/A,N/A,N/A
+runny nose,chest pain,congestion,sore throat,headache,Sinusitis,N/A,N/A,N/A
+congestion,nausea,fever,diarrhea,vomiting,Gastroenteritis,N/A,N/A,N/A
+fever,chills,headache,body ache,fatigue,Influenza,N/A,N/A,N/A
+sore throat,body ache,vomiting,fever,nausea,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,shortness of breath,sore throat,congestion,headache,Sinusitis,N/A,N/A,N/A
+nausea,diarrhea,joint pain,vomiting,fever,Gastroenteritis,N/A,N/A,N/A
+cough,fatigue,vomiting,fever,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,joint pain,headache,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sneezing,fever,runny nose,itchy eyes,vomiting,Allergic Rhinitis,N/A,N/A,N/A
+rash,vomiting,fever,nausea,body ache,Malaria,Chloroquine,Artemether,Primaquine
+sore throat,cough,sneezing,runny nose,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+diarrhea,nausea,fever,vomiting,,Gastroenteritis,N/A,N/A,N/A
+cough,shortness of breath,runny nose,sore throat,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chest pain,cough,sneezing,runny nose,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+cough,fever,chest pain,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+body ache,diarrhea,vomiting,fever,nausea,Gastroenteritis,N/A,N/A,N/A
+sore throat,fever,sneezing,congestion,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+cough,fever,shortness of breath,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+runny nose,joint pain,nausea,sneezing,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,sneezing,congestion,diarrhea,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,congestion,sneezing,sore throat,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,fever,body ache,nausea,chills,Malaria,Chloroquine,Artemether,Primaquine
+headache,nausea,blurred vision,vomiting,fever,Migraine,N/A,N/A,N/A
+diarrhea,nausea,dizziness,vomiting,fever,Gastroenteritis,N/A,N/A,N/A
+nausea,fever,diarrhea,dizziness,vomiting,Gastroenteritis,N/A,N/A,N/A
+nausea,congestion,shortness of breath,runny nose,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+cough,diarrhea,fever,chest pain,shortness of breath,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+cough,fever,diarrhea,shortness of breath,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+chills,rash,chest pain,fever,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,vomiting,cough,nausea,diarrhea,Gastroenteritis,N/A,N/A,N/A
+headache,blurred vision,nausea,dizziness,runny nose,Migraine,N/A,N/A,N/A
+headache,joint pain,rash,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,loss of appetite,shortness of breath,chest pain,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,sore throat,rash,joint pain,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+congestion,headache,sore throat,runny nose,fatigue,Sinusitis,N/A,N/A,N/A
+chills,fever,body ache,fatigue,headache,Influenza,N/A,N/A,N/A
+shortness of breath,cough,chest pain,blurred vision,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+diarrhea,vomiting,fever,nausea,runny nose,Gastroenteritis,N/A,N/A,N/A
+body ache,fever,blurred vision,chills,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+headache,joint pain,fever,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,headache,joint pain,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+rash,cough,headache,joint pain,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,fatigue,fever,loss of appetite,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+blurred vision,nausea,fatigue,headache,vomiting,Migraine,N/A,N/A,N/A
+sore throat,chills,congestion,body ache,runny nose,Sinusitis,N/A,N/A,N/A
+loss of appetite,shortness of breath,fatigue,cough,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+rash,headache,joint pain,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,chest pain,shortness of breath,loss of appetite,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+vomiting,body ache,fever,chills,nausea,Malaria,Chloroquine,Artemether,Primaquine
+rash,fever,joint pain,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,sneezing,itchy eyes,vomiting,congestion,Allergic Rhinitis,N/A,N/A,N/A
+chills,blurred vision,vomiting,headache,nausea,Migraine,N/A,N/A,N/A
+cough,shortness of breath,fever,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+dizziness,fever,fatigue,chills,body ache,Influenza,N/A,N/A,N/A
+headache,sore throat,runny nose,congestion,,Sinusitis,N/A,N/A,N/A
+diarrhea,itchy eyes,congestion,sneezing,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+fever,cough,chills,loss of appetite,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+runny nose,sneezing,itchy eyes,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+congestion,sore throat,cough,sneezing,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,blurred vision,nausea,headache,,Migraine,N/A,N/A,N/A
+joint pain,sneezing,chills,fever,body ache,Malaria,Chloroquine,Artemether,Primaquine
+fever,blurred vision,nausea,vomiting,diarrhea,Gastroenteritis,N/A,N/A,N/A
+blurred vision,chest pain,chills,fever,cough,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+vomiting,nausea,chills,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+fever,nausea,diarrhea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+joint pain,fatigue,fever,body ache,chills,Influenza,N/A,N/A,N/A
+chest pain,cough,shortness of breath,fever,runny nose,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,blurred vision,runny nose,sore throat,rash,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,congestion,fever,chills,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+nausea,shortness of breath,congestion,sneezing,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+headache,fever,vomiting,chills,body ache,Influenza,N/A,N/A,N/A
+fever,fatigue,cough,loss of appetite,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+vomiting,blurred vision,headache,nausea,,Migraine,N/A,N/A,N/A
+chest pain,fever,body ache,shortness of breath,runny nose,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+cough,sore throat,runny nose,congestion,shortness of breath,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+loss of appetite,fatigue,shortness of breath,sneezing,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+diarrhea,chest pain,cough,shortness of breath,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,congestion,sneezing,fatigue,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+fever,cough,shortness of breath,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+vomiting,nausea,headache,blurred vision,chills,Migraine,N/A,N/A,N/A
+vomiting,runny nose,body ache,fever,chills,Malaria,Chloroquine,Artemether,Primaquine
+chest pain,nausea,fever,diarrhea,vomiting,Gastroenteritis,N/A,N/A,N/A
+nausea,chest pain,fever,diarrhea,vomiting,Gastroenteritis,N/A,N/A,N/A
+joint pain,rash,fever,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,chest pain,cough,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+joint pain,rash,headache,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,headache,sore throat,congestion,blurred vision,Sinusitis,N/A,N/A,N/A
+runny nose,congestion,sneezing,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+chills,vomiting,fever,body ache,nausea,Malaria,Chloroquine,Artemether,Primaquine
+cough,loss of appetite,vomiting,sore throat,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,blurred vision,headache,vomiting,runny nose,Migraine,N/A,N/A,N/A
+nausea,chills,body ache,vomiting,fever,Malaria,Chloroquine,Artemether,Primaquine
+headache,runny nose,fatigue,chills,body ache,Influenza,N/A,N/A,N/A
+joint pain,headache,fever,rash,fatigue,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+nausea,fever,vomiting,diarrhea,runny nose,Gastroenteritis,N/A,N/A,N/A
+chest pain,fever,shortness of breath,cough,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,headache,nausea,diarrhea,vomiting,Gastroenteritis,N/A,N/A,N/A
+shortness of breath,congestion,fever,cough,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,sneezing,congestion,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+cough,joint pain,body ache,congestion,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+sneezing,runny nose,cough,congestion,nausea,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chills,vomiting,fever,body ache,nausea,Malaria,Chloroquine,Artemether,Primaquine
+joint pain,vomiting,headache,nausea,blurred vision,Migraine,N/A,N/A,N/A
+rash,joint pain,headache,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,cough,shortness of breath,chest pain,blurred vision,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+vomiting,congestion,headache,blurred vision,nausea,Migraine,N/A,N/A,N/A
+runny nose,nausea,congestion,headache,sore throat,Sinusitis,N/A,N/A,N/A
+loss of appetite,cough,fever,shortness of breath,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+cough,fever,shortness of breath,chest pain,dizziness,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+loss of appetite,shortness of breath,cough,fatigue,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,itchy eyes,congestion,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+fever,nausea,vomiting,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+fever,joint pain,rash,dizziness,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,congestion,sneezing,sore throat,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+headache,body ache,fatigue,fever,chills,Influenza,N/A,N/A,N/A
+dizziness,loss of appetite,cough,fatigue,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+cough,sore throat,congestion,headache,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+cough,chest pain,shortness of breath,fever,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+shortness of breath,fever,cough,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,blurred vision,nausea,vomiting,,Migraine,N/A,N/A,N/A
+cough,vomiting,headache,blurred vision,nausea,Migraine,N/A,N/A,N/A
+fatigue,shortness of breath,cough,loss of appetite,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,chest pain,fever,cough,shortness of breath,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+rash,congestion,joint pain,fever,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,fever,diarrhea,joint pain,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,fatigue,body ache,chills,headache,Influenza,N/A,N/A,N/A
+cough,fatigue,loss of appetite,fever,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+headache,shortness of breath,joint pain,fever,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+chest pain,cough,headache,shortness of breath,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+vomiting,fever,cough,shortness of breath,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,cough,fever,shortness of breath,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+headache,fever,joint pain,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,congestion,sore throat,loss of appetite,runny nose,Sinusitis,N/A,N/A,N/A
+headache,fever,joint pain,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,shortness of breath,fever,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,sore throat,runny nose,headache,,Sinusitis,N/A,N/A,N/A
+diarrhea,nausea,fever,rash,vomiting,Gastroenteritis,N/A,N/A,N/A
+fatigue,fever,chills,body ache,headache,Influenza,N/A,N/A,N/A
+chills,fever,joint pain,rash,dizziness,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,sneezing,congestion,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+nausea,vomiting,fever,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+headache,blurred vision,nausea,sore throat,sneezing,Migraine,N/A,N/A,N/A
+fever,fatigue,chills,body ache,headache,Influenza,N/A,N/A,N/A
+fatigue,chest pain,fever,cough,shortness of breath,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fever,body ache,chills,fatigue,diarrhea,Influenza,N/A,N/A,N/A
+rash,cough,fever,chest pain,shortness of breath,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,congestion,cough,sore throat,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+body ache,fatigue,chills,cough,headache,Influenza,N/A,N/A,N/A
+headache,rash,joint pain,fever,nausea,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+chills,sneezing,joint pain,rash,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,sneezing,diarrhea,vomiting,nausea,Gastroenteritis,N/A,N/A,N/A
+shortness of breath,fatigue,cough,fever,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+blurred vision,headache,vomiting,nausea,,Migraine,N/A,N/A,N/A
+nausea,blurred vision,headache,fever,body ache,Migraine,N/A,N/A,N/A
+cough,fatigue,chills,loss of appetite,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,runny nose,congestion,fatigue,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+cough,fatigue,fever,shortness of breath,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+cough,congestion,headache,shortness of breath,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+nausea,chills,body ache,fever,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+vomiting,nausea,fever,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+headache,fever,rash,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,cough,nausea,diarrhea,fever,Gastroenteritis,N/A,N/A,N/A
+sore throat,runny nose,congestion,headache,,Sinusitis,N/A,N/A,N/A
+headache,joint pain,body ache,fever,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+congestion,sore throat,runny nose,chills,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+body ache,itchy eyes,sneezing,runny nose,congestion,Allergic Rhinitis,N/A,N/A,N/A
+rash,fever,headache,congestion,joint pain,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,sore throat,runny nose,congestion,,Sinusitis,N/A,N/A,N/A
+fever,headache,fatigue,body ache,chills,Influenza,N/A,N/A,N/A
+cough,chest pain,shortness of breath,fever,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,nausea,cough,body ache,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chills,fever,fatigue,body ache,headache,Influenza,N/A,N/A,N/A
+headache,dizziness,sore throat,sneezing,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,itchy eyes,sneezing,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+cough,dizziness,fever,loss of appetite,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+headache,chills,shortness of breath,cough,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,headache,sore throat,congestion,,Sinusitis,N/A,N/A,N/A
+headache,vomiting,body ache,nausea,blurred vision,Migraine,N/A,N/A,N/A
+runny nose,congestion,headache,itchy eyes,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+headache,congestion,sore throat,runny nose,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,body ache,nausea,chills,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+vomiting,joint pain,nausea,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+congestion,sore throat,runny nose,headache,loss of appetite,Sinusitis,N/A,N/A,N/A
+blurred vision,runny nose,sore throat,congestion,headache,Sinusitis,N/A,N/A,N/A
+joint pain,headache,rash,nausea,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fatigue,chills,headache,fever,body ache,Influenza,N/A,N/A,N/A
+vomiting,diarrhea,nausea,fever,,Gastroenteritis,N/A,N/A,N/A
+shortness of breath,loss of appetite,cough,fever,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sneezing,runny nose,headache,congestion,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+blurred vision,nausea,vomiting,headache,,Migraine,N/A,N/A,N/A
+headache,cough,fever,chest pain,shortness of breath,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+diarrhea,sore throat,sneezing,cough,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+sore throat,fever,diarrhea,nausea,blurred vision,Gastroenteritis,N/A,N/A,N/A
+cough,shortness of breath,chest pain,fever,runny nose,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+congestion,itchy eyes,sneezing,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+fatigue,chills,headache,fever,body ache,Influenza,N/A,N/A,N/A
+rash,headache,fever,joint pain,chills,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,chills,nausea,fever,body ache,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,itchy eyes,congestion,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+rash,fever,headache,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,vomiting,dizziness,nausea,body ache,Malaria,Chloroquine,Artemether,Primaquine
+sore throat,runny nose,sneezing,cough,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,loss of appetite,cough,fatigue,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+sore throat,runny nose,congestion,sneezing,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,diarrhea,congestion,headache,sore throat,Sinusitis,N/A,N/A,N/A
+vomiting,nausea,fever,diarrhea,blurred vision,Gastroenteritis,N/A,N/A,N/A
+itchy eyes,congestion,blurred vision,runny nose,body ache,Allergic Rhinitis,N/A,N/A,N/A
+joint pain,headache,nausea,fever,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,congestion,vomiting,blurred vision,nausea,Migraine,N/A,N/A,N/A
+sneezing,blurred vision,runny nose,congestion,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,joint pain,headache,blurred vision,nausea,Migraine,N/A,N/A,N/A
+fever,chest pain,shortness of breath,cough,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+body ache,fatigue,chills,fever,headache,Influenza,N/A,N/A,N/A
+congestion,sneezing,runny nose,itchy eyes,sore throat,Allergic Rhinitis,N/A,N/A,N/A
+sore throat,runny nose,congestion,headache,,Sinusitis,N/A,N/A,N/A
+fever,diarrhea,chest pain,vomiting,nausea,Gastroenteritis,N/A,N/A,N/A
+nausea,diarrhea,vomiting,fever,fatigue,Gastroenteritis,N/A,N/A,N/A
+nausea,diarrhea,vomiting,fever,chest pain,Gastroenteritis,N/A,N/A,N/A
+vomiting,diarrhea,fever,nausea,,Gastroenteritis,N/A,N/A,N/A
+runny nose,congestion,sneezing,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,chills,nausea,chest pain,sneezing,Malaria,Chloroquine,Artemether,Primaquine
+chest pain,cough,fever,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fatigue,chills,headache,sneezing,body ache,Influenza,N/A,N/A,N/A
+fever,itchy eyes,runny nose,sneezing,cough,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,cough,congestion,sore throat,joint pain,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+loss of appetite,congestion,cough,sore throat,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,cough,chest pain,shortness of breath,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fatigue,chills,fever,headache,body ache,Influenza,N/A,N/A,N/A
+nausea,headache,sore throat,diarrhea,congestion,Sinusitis,N/A,N/A,N/A
+cough,runny nose,congestion,sore throat,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,vomiting,nausea,chills,body ache,Malaria,Chloroquine,Artemether,Primaquine
+vomiting,diarrhea,nausea,fever,,Gastroenteritis,N/A,N/A,N/A
+fever,nausea,vomiting,diarrhea,,Gastroenteritis,N/A,N/A,N/A
+fever,cough,shortness of breath,fatigue,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+shortness of breath,loss of appetite,dizziness,fever,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+chest pain,cough,fever,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+chest pain,headache,body ache,vomiting,blurred vision,Migraine,N/A,N/A,N/A
+fever,diarrhea,joint pain,chest pain,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,nausea,diarrhea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+headache,rash,fever,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+congestion,runny nose,sneezing,sore throat,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fever,congestion,sneezing,sore throat,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+joint pain,headache,fever,rash,blurred vision,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+runny nose,congestion,cough,sore throat,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chest pain,cough,shortness of breath,fever,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+sore throat,chills,headache,runny nose,congestion,Sinusitis,N/A,N/A,N/A
+headache,chills,body ache,fatigue,fever,Influenza,N/A,N/A,N/A
+headache,vomiting,blurred vision,nausea,sneezing,Migraine,N/A,N/A,N/A
+vomiting,sore throat,chills,fever,headache,Influenza,N/A,N/A,N/A
+fever,nausea,headache,joint pain,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,nausea,diarrhea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+cough,sneezing,congestion,dizziness,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+headache,chills,chest pain,fever,body ache,Influenza,N/A,N/A,N/A
+fever,nausea,body ache,chills,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+headache,rash,fever,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+body ache,nausea,chills,fever,vomiting,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,loss of appetite,congestion,sneezing,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+rash,fever,vomiting,body ache,dizziness,Malaria,Chloroquine,Artemether,Primaquine
+chills,vomiting,rash,fever,body ache,Malaria,Chloroquine,Artemether,Primaquine
+congestion,runny nose,sore throat,headache,,Sinusitis,N/A,N/A,N/A
+shortness of breath,fatigue,cough,loss of appetite,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,vomiting,diarrhea,fever,,Gastroenteritis,N/A,N/A,N/A
+cough,headache,sore throat,congestion,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chest pain,fever,shortness of breath,cough,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+body ache,sneezing,itchy eyes,congestion,runny nose,Allergic Rhinitis,N/A,N/A,N/A
+loss of appetite,fatigue,cough,shortness of breath,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,headache,rash,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,headache,fever,shortness of breath,chest pain,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,runny nose,joint pain,rash,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,joint pain,runny nose,blurred vision,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sneezing,itchy eyes,runny nose,congestion,,Allergic Rhinitis,N/A,N/A,N/A
+sneezing,itchy eyes,congestion,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+runny nose,nausea,congestion,sneezing,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+itchy eyes,sneezing,congestion,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+blurred vision,headache,fever,vomiting,nausea,Migraine,N/A,N/A,N/A
+fatigue,loss of appetite,shortness of breath,fever,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+nausea,loss of appetite,vomiting,blurred vision,headache,Migraine,N/A,N/A,N/A
+headache,rash,joint pain,congestion,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+congestion,runny nose,itchy eyes,sneezing,,Allergic Rhinitis,N/A,N/A,N/A
+chest pain,joint pain,fever,headache,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,runny nose,sore throat,congestion,,Sinusitis,N/A,N/A,N/A
+sneezing,sore throat,congestion,cough,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,headache,sore throat,congestion,,Sinusitis,N/A,N/A,N/A
+fever,joint pain,rash,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+body ache,fatigue,rash,fever,headache,Influenza,N/A,N/A,N/A
+body ache,nausea,fever,vomiting,chills,Malaria,Chloroquine,Artemether,Primaquine
+loss of appetite,headache,joint pain,shortness of breath,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,loss of appetite,shortness of breath,fever,fatigue,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+loss of appetite,shortness of breath,fatigue,body ache,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+vomiting,nausea,blurred vision,headache,,Migraine,N/A,N/A,N/A
+fever,headache,joint pain,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,joint pain,body ache,fever,chills,Malaria,Chloroquine,Artemether,Primaquine
+rash,itchy eyes,congestion,runny nose,sneezing,Allergic Rhinitis,N/A,N/A,N/A
+joint pain,headache,fever,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,chills,nausea,fever,dizziness,Malaria,Chloroquine,Artemether,Primaquine
+vomiting,chills,body ache,nausea,fever,Malaria,Chloroquine,Artemether,Primaquine
+runny nose,congestion,sore throat,headache,,Sinusitis,N/A,N/A,N/A
+nausea,fever,vomiting,chills,body ache,Malaria,Chloroquine,Artemether,Primaquine
+headache,fatigue,nausea,vomiting,blurred vision,Migraine,N/A,N/A,N/A
+cough,sneezing,fatigue,loss of appetite,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+headache,joint pain,rash,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+fever,headache,joint pain,rash,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+chills,joint pain,fever,shortness of breath,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+headache,blurred vision,nausea,vomiting,joint pain,Migraine,N/A,N/A,N/A
+sore throat,fever,body ache,chills,fatigue,Influenza,N/A,N/A,N/A
+shortness of breath,fever,cough,chest pain,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+dizziness,runny nose,sneezing,headache,congestion,Sinusitis,N/A,N/A,N/A
+joint pain,sore throat,runny nose,congestion,headache,Sinusitis,N/A,N/A,N/A
+headache,blurred vision,congestion,runny nose,sore throat,Sinusitis,N/A,N/A,N/A
+headache,vomiting,blurred vision,nausea,,Migraine,N/A,N/A,N/A
+cough,shortness of breath,vomiting,fever,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,diarrhea,nausea,vomiting,,Gastroenteritis,N/A,N/A,N/A
+chills,headache,fatigue,body ache,diarrhea,Influenza,N/A,N/A,N/A
+shortness of breath,fever,cough,rash,loss of appetite,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+itchy eyes,sneezing,congestion,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+cough,sore throat,runny nose,congestion,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+runny nose,sneezing,congestion,loss of appetite,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+sore throat,body ache,cough,congestion,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+fatigue,blurred vision,headache,nausea,vomiting,Migraine,N/A,N/A,N/A
+cough,sore throat,congestion,runny nose,sneezing,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+rash,fever,joint pain,headache,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,nausea,rash,fever,body ache,Malaria,Chloroquine,Artemether,Primaquine
+headache,vomiting,blurred vision,nausea,,Migraine,N/A,N/A,N/A
+cough,fever,chest pain,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+sore throat,sneezing,cough,congestion,chills,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+vomiting,headache,nausea,runny nose,blurred vision,Migraine,N/A,N/A,N/A
+fever,congestion,shortness of breath,cough,sore throat,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+congestion,blurred vision,headache,runny nose,sore throat,Sinusitis,N/A,N/A,N/A
+sore throat,sneezing,runny nose,congestion,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+shortness of breath,runny nose,chest pain,cough,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+headache,body ache,chills,fatigue,fever,Influenza,N/A,N/A,N/A
+nausea,chills,vomiting,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+rash,joint pain,sore throat,headache,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+shortness of breath,fatigue,fever,loss of appetite,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,chills,fatigue,body ache,headache,Influenza,N/A,N/A,N/A
+congestion,sneezing,itchy eyes,runny nose,,Allergic Rhinitis,N/A,N/A,N/A
+fever,rash,loss of appetite,joint pain,headache,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+chills,rash,joint pain,headache,fever,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+cough,congestion,sneezing,runny nose,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+nausea,chills,joint pain,body ache,fever,Malaria,Chloroquine,Artemether,Primaquine
+headache,rash,fever,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+rash,headache,joint pain,fever,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+sore throat,congestion,headache,runny nose,sneezing,Sinusitis,N/A,N/A,N/A
+rash,headache,chills,fatigue,body ache,Influenza,N/A,N/A,N/A
+nausea,vomiting,diarrhea,fever,,Gastroenteritis,N/A,N/A,N/A
+rash,runny nose,sneezing,congestion,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+congestion,sneezing,runny nose,itchy eyes,,Allergic Rhinitis,N/A,N/A,N/A
+vomiting,blurred vision,headache,nausea,,Migraine,N/A,N/A,N/A
+congestion,runny nose,sneezing,cough,sore throat,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+shortness of breath,sore throat,runny nose,sneezing,cough,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+diarrhea,headache,joint pain,fever,rash,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+chest pain,shortness of breath,cough,fever,headache,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+runny nose,headache,sore throat,congestion,,Sinusitis,N/A,N/A,N/A
+fever,chills,vomiting,body ache,nausea,Malaria,Chloroquine,Artemether,Primaquine
+congestion,cough,sneezing,sore throat,runny nose,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chest pain,cough,fever,shortness of breath,,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+fatigue,body ache,headache,chills,fever,Influenza,N/A,N/A,N/A
+chest pain,shortness of breath,loss of appetite,cough,fever,Pneumonia,Amoxicillin,Clarithromycin,Oxygen Therapy
+cough,sneezing,sore throat,runny nose,congestion,Common Cold,Antihistamines,Decongestants,Rest & Fluids
+chest pain,fever,nausea,vomiting,diarrhea,Gastroenteritis,N/A,N/A,N/A
+headache,fever,rash,joint pain,,Dengue,Acetaminophen,IV Fluids,Platelet Transfusion
+vomiting,chills,headache,blurred vision,nausea,Migraine,N/A,N/A,N/A
+sore throat,congestion,runny nose,headache,,Sinusitis,N/A,N/A,N/A
+nausea,headache,blurred vision,vomiting,,Migraine,N/A,N/A,N/A
+runny nose,headache,congestion,sore throat,,Sinusitis,N/A,N/A,N/A
+sneezing,runny nose,congestion,headache,itchy eyes,Allergic Rhinitis,N/A,N/A,N/A
+chills,fatigue,body ache,fever,loss of appetite,Influenza,N/A,N/A,N/A
+cough,loss of appetite,chills,fever,shortness of breath,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+loss of appetite,cough,shortness of breath,fatigue,fever,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,chills,body ache,fatigue,nausea,Malaria,Chloroquine,Artemether,Primaquine
+vomiting,fever,chills,body ache,nausea,Malaria,Chloroquine,Artemether,Primaquine
+diarrhea,loss of appetite,vomiting,fever,nausea,Gastroenteritis,N/A,N/A,N/A
+runny nose,nausea,diarrhea,blurred vision,fever,Gastroenteritis,N/A,N/A,N/A
+fever,loss of appetite,fatigue,shortness of breath,cough,COVID-19,Paracetamol,Azithromycin,Rest & Hydration
+fever,runny nose,body ache,vomiting,chills,Malaria,Chloroquine,Artemether,Primaquine
+diarrhea,runny nose,itchy eyes,sneezing,vomiting,Allergic Rhinitis,N/A,N/A,N/A
+fever,fatigue,blurred vision,body ache,chills,Influenza,N/A,N/A,N/A
+body ache,fever,nausea,chills,vomiting,Malaria,Chloroquine,Artemether,Primaquine

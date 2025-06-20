@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Front Desk System - HealthCare Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header class="header">
+        <nav class="nav">
+            <div class="logo">HealthCare Pro</div>
+            <a href="/" class="btn btn-secondary">Back to Home</a>
+        </nav>
+    </header>
+
+    <section class="frontdesk-login" id="frontdesk-login">
+        <div class="login-panel">
+            <div class="icon" aria-label="Reception">🏥</div>
+            <h2>Front Desk Login</h2>
+            <p style="margin-bottom: 18px;">Welcome to the appointment management system!</p>
+            <div class="demo-credentials">
+                <strong>Demo:</strong> Username: <code>frontdesk1</code> | Password: <code>password</code>
+            </div>
+            <form id="frontdesk-login-form">
+                <label for="frontdesk-username">Username</label>
+                <input type="text" id="frontdesk-username" name="username" required>
+                <label for="frontdesk-password">Password</label>
+                <input type="password" id="frontdesk-password" name="password" required>
+                <button type="submit" class="btn btn-primary">Login</button>
+                <div class="error-message"></div>
+            </form>
+        </div>
+    </section>
+
+    <section class="frontdesk-dashboard" id="frontdesk-dashboard" style="display:none;">
+        <div class="container">
+            <div class="dashboard-panel">
+                <div class="dashboard-profile">
+                    <div class="avatar">FD</div>
+                    <div class="dashboard-profile-info">
+                        <h3 id="frontdesk-name">Front Desk</h3>
+                        <p>Reception Staff</p>
+                    </div>
+                    <div style="margin-left: auto; display: flex; gap: 10px;">
+                        <button class="btn btn-secondary" onclick="logout()">Logout</button>
+                    </div>
+                </div>
+
+                <div class="dashboard-stats" style="display: flex; justify-content: center; gap: 20px; margin: 2rem 0;">
+                    <div class="stat-card" style="min-width: 200px; text-align: center;">
+                        <strong id="total-appointments">0</strong>
+                        <span>Today's Appointments</span>
+                    </div>
+                </div>
+
+                <div class="upcoming-appointments">
+                    <h4>Appointment Management</h4>
+                    <div style="margin-bottom: 1rem;">
+                        <button id="show-appointment-form-btn" class="btn btn-secondary">Manual Booking</button>
+                    </div>
+                    <div id="new-appointment-form-container" style="display: none; background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 15px; margin-bottom: 1rem;">
+                        <h5 style="color: white; margin-bottom: 1rem;">New Appointment</h5>
+                        <form id="new-appointment-form">
+                            <input type="text" id="patient-name" placeholder="Patient Name" required style="margin-bottom: 0.5rem;">
+                            <input type="tel" id="patient-phone" placeholder="Phone Number" required style="margin-bottom: 0.5rem;">
+                            <input type="date" id="appointment-date" required style="margin-bottom: 0.5rem;">
+                            <textarea id="patient-symptoms" placeholder="Enter symptoms, separated by commas (e.g., fever, cough, headache)" required style="width: 100%; padding: 0.5rem; margin-bottom: 0.5rem; border-radius: 5px; border: 1px solid #ccc; min-height: 80px;"></textarea>
+                            <select id="appointment-type" required style="margin-bottom: 1rem;">
+                                <option value="">Select Type</option>
+                                <option value="Regular Checkup">Regular Checkup</option>
+                                <option value="Follow-up">Follow-up</option>
+                                <option value="Consultation">Consultation</option>
+                                <option value="Emergency">Emergency</option>
+                            </select>
+                            <div>
+                                <button type="submit" class="btn btn-primary">Book Appointment</button>
+                                <button type="button" class="btn btn-secondary" onclick="hideAppointmentForm()" style="margin-left: 0.5rem;">Cancel</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div id="appointment-list"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
