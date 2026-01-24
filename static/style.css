@@ -1,21 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --primary: linear-gradient(135deg, #00B4D8 0%, #0077B6 100%); /* Deep Sky Blue to Teal Blue */
-    --secondary: linear-gradient(135deg, #80ED99 0%, #48CAE4 100%); /* Mint Green to Aqua Blue */
-    --accent: linear-gradient(135deg, #48CAE4 0%, #00B4D8 100%); /* Aqua Blue to Deep Sky Blue */
-    --success: linear-gradient(135deg, #38A3A5 0%, #80ED99 100%); /* Green Sea to Mint Green */
-    --error: linear-gradient(135deg, #FF6B6B 0%, #FFB4A2 100%); /* Coral Red to lighter coral */
-    --dark: #0077B6; /* Teal Blue */
-    --light: #E0F7FA; /* Soft Aqua */
-    --glass: rgba(224, 247, 250, 0.15); /* Soft Aqua glass */
-    --glass-dark: rgba(0, 119, 182, 0.1); /* Teal Blue glass */
-    --shadow: 0 8px 32px rgba(0, 180, 216, 0.15); /* Deep Sky Blue shadow */
+    --primary: linear-gradient(135deg, #00B4D8 0%, #0077B6 100%);
+    --secondary: linear-gradient(135deg, #80ED99 0%, #48CAE4 100%);
+    --accent: linear-gradient(135deg, #48CAE4 0%, #00B4D8 100%);
+    --success: linear-gradient(135deg, #38A3A5 0%, #80ED99 100%);
+    --error: linear-gradient(135deg, #FF6B6B 0%, #FFB4A2 100%);
+    --dark: #0077B6;
+    --light: #E0F7FA;
+    --glass: rgba(224, 247, 250, 0.15);
+    --glass-dark: rgba(0, 119, 182, 0.1);
+    --shadow: 0 8px 32px rgba(0, 180, 216, 0.15);
     --shadow-hover: 0 15px 35px rgba(0, 180, 216, 0.25);
     --text-primary: #333333; /* Charcoal */
     --text-secondary: #666666; /* Slate Gray */
     --bg-primary: #E0F7FA; /* Soft Aqua */
-    --bg-gradient: linear-gradient(135deg, #00B4D8 0%, #48CAE4 100%); /* Deep Sky Blue to Aqua Blue */
+    --bg-gradient: linear-gradient(135deg, #00B4D8 0%, #48CAE4 100%);
 }
 
 * {
@@ -32,7 +32,6 @@ body {
     overflow-x: hidden;
 }
 
-/* Header */
 .header {
     position: sticky;
     top: 0;
@@ -100,7 +99,6 @@ body {
     width: 100%;
 }
 
-/* Mobile menu */
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -117,7 +115,6 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
-/* Hero Section */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -261,7 +258,6 @@ body {
     50% { transform: translateY(-20px) rotate(180deg); }
 }
 
-/* Features Section */
 .features {
     padding: 8rem 0;
     position: relative;
@@ -386,7 +382,6 @@ body {
     font-size: 1.1rem;
 }
 
-/* Access Section */
 .access-section {
     padding: 8rem 0;
     background: rgba(0, 0, 0, 0.1);
@@ -417,12 +412,11 @@ body {
     font-weight: 300;
 }
 
-/* Login and Dashboard Panels */
 .doctor-login, .frontdesk-login {
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 70px); /* 70px is header height approx */
+    min-height: calc(100vh - 70px);
     padding: 2rem;
 }
 
@@ -656,7 +650,6 @@ label {
     text-decoration: underline;
 }
 
-/* Testimonials */
 .testimonials {
     padding: 8rem 0;
     background: rgba(255, 255, 255, 0.05);
@@ -755,7 +748,6 @@ label {
     font-size: 0.95rem;
 }
 
-/* Footer */
 .footer {
     background: rgba(0, 0, 0, 0.3);
     backdrop-filter: blur(30px);
@@ -781,7 +773,6 @@ label {
     text-decoration: underline;
 }
 
-/* Utility and Animation */
 @keyframes fadeIn {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -901,13 +892,13 @@ label {
     background: var(--primary);
 }
 .modal-content {
-    background: #0a2342; /* dark blue */
+    background: #0a2342;
     padding: 2rem;
     border-radius: 10px;
     min-width: 300px;
     max-width: 90vw;
     position: relative;
-    color: #fff; /* optional: makes text readable */
+    color: #fff;
 }
 .patient-search {
     display: flex;
@@ -916,12 +907,11 @@ label {
     margin-bottom: 2rem;
     background-color: rgb(0, 0, 175);
 }
-/* Patient Card Styling */
 .patient-card {
-    background: rgba(255,255,255,0.08); /* lighter than your dark blue background */
-    border: 3px solid #48cae4;          /* thick border, lighter blue */
+    background: rgba(255,255,255,0.08);
+    border: 3px solid #48cae4;
     border-radius: 18px;
-    margin-bottom: 1.5rem;              /* space between cards */
+    margin-bottom: 1.5rem;
     padding: 1.5rem 1.5rem 1rem 1.5rem;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08);
     transition: box-shadow 0.2s;
@@ -934,7 +924,7 @@ label {
 
 .patient-card:hover {
     box-shadow: 0 8px 32px rgba(72,202,228,0.18);
-    border-color: #80ed99; /* subtle highlight on hover */
+    border-color: #80ed99;
 }
 .patient-list {
     margin-top: 2rem;
@@ -949,4 +939,67 @@ label {
 }
 .patient-card h3 {
     font-weight: bold;
+}
+
+.brand{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+}
+
+.clinic-meta{
+    display:flex;
+    flex-direction:column;
+    gap:0.15rem;
+    padding-left:1rem;
+    border-left:1px solid rgba(255,255,255,0.25);
+}
+
+.clinic-name{
+    font-size:0.95rem;
+    font-weight:700;
+    color:rgba(255,255,255,0.95);
+    letter-spacing:0.2px;
+}
+
+.clinic-address{
+    font-size:0.85rem;
+    font-weight:400;
+    color:rgba(255,255,255,0.75);
+}
+
+/* Make header look more premium */
+.header{
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:
+      radial-gradient(60% 60% at 50% 30%, rgba(255,255,255,0.10), transparent 60%),
+      radial-gradient(40% 40% at 20% 80%, rgba(72,202,228,0.18), transparent 55%),
+      radial-gradient(40% 40% at 80% 70%, rgba(128,237,153,0.14), transparent 55%);
+    z-index:1;
+    pointer-events:none;
+}
+
+.hero-content{
+    position:relative;
+    z-index:2;
+}
+
+.cta-buttons{
+    margin-top: 0.5rem;
+}
+
+.hero p{
+    font-weight: 400;
+}
+
+@media (max-width: 768px){
+    .clinic-meta{
+        display:none;
+    }
 }

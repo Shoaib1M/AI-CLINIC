@@ -29,13 +29,22 @@ DATA_FILE = 'updated_synthetic_medical_dataset.csv'
 def load_data():
     """Loads the medical dataset into a global DataFrame."""
     global medical_df
+
     if os.path.exists(DATA_FILE):
         print("Loading data...")
-        medical_df = pd.read_csv(DATA_FILE)
+
+        medical_df = pd.read_csv(DATA_FILE, header=None)
+
+        medical_df.columns = [
+            "Symptom_1", "Symptom_2", "Symptom_3", "Symptom_4", "Symptom_5",
+            "Disease",
+            "Prescription_1", "Prescription_2", "Prescription_3"
+        ]
+
         print("Data loaded successfully.")
+
     else:
         print(f"Error: Data file not found at {DATA_FILE}. Creating mock data.")
-        # Create mock data if file doesn't exist
         mock_data = {
             'Disease': ['Common Cold', 'Flu', 'Migraine', 'Gastritis', 'Hypertension'] * 20,
             'Symptom_1': ['Runny nose', 'Fever', 'Headache', 'Stomach pain', 'High blood pressure'] * 20,
@@ -54,7 +63,7 @@ def train_model():
     # This function uses the global medical_df loaded by load_model_and_data
     symptom_cols = [col for col in medical_df.columns if col.startswith("Symptom")]
     medical_df["Symptoms"] = medical_df[symptom_cols].apply(
-        lambda row: [str(s).strip() for s in row if pd.notna(s) and str(s).strip()], axis=1
+        lambda row: [str(s).strip().lower() for s in row if pd.notna(s) and str(s).strip()], axis=1
     )
     
     # Filter out rows with no symptoms
@@ -127,6 +136,7 @@ def predict_disease(symptoms):
         return "Invalid input", "N/A", []
 
     try:
+        symptoms = [str(s).strip().lower() for s in symptoms if str(s).strip()]
         input_vec = mlb.transform([symptoms])
         prediction = model.predict(input_vec)[0]
         prediction_proba = model.predict_proba(input_vec)
@@ -377,9 +387,11 @@ def test_pdf():
         return f"Error generating test PDF: {e}", 500
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
 @app.route('/generate-pdf', methods=['POST'])
 def generate_pdf_route():
     """Direct route for PDF generation."""
-    return generate_pdf()  # Use your existing generate_pdf function
+    return generate_pdf() 
+
+if __name__ == '__main__':
+    app.run(debug=True)
+
