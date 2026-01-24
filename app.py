@@ -1,6 +1,8 @@
 import pandas as pd
 from flask import Flask, render_template, request, jsonify, send_file
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score, classification_report
 from sklearn.preprocessing import MultiLabelBinarizer
 import joblib
 import os
@@ -32,7 +34,6 @@ def load_data():
 
     if os.path.exists(DATA_FILE):
         print("Loading data...")
-
         medical_df = pd.read_csv(DATA_FILE, header=None)
 
         medical_df.columns = [
@@ -58,15 +59,15 @@ def load_data():
 
 
 def train_model():
-    """Trains and saves the model and multilabel binarizer."""
     print("Training model...")
-    # This function uses the global medical_df loaded by load_model_and_data
+
     symptom_cols = [col for col in medical_df.columns if col.startswith("Symptom")]
+
     medical_df["Symptoms"] = medical_df[symptom_cols].apply(
-        lambda row: [str(s).strip().lower() for s in row if pd.notna(s) and str(s).strip()], axis=1
+        lambda row: [str(s).strip().lower() for s in row if pd.notna(s) and str(s).strip()],
+        axis=1
     )
-    
-    # Filter out rows with no symptoms
+
     valid_rows = medical_df["Symptoms"].apply(lambda x: len(x) > 0)
     filtered_df = medical_df[valid_rows]
 
@@ -74,13 +75,27 @@ def train_model():
     X = local_mlb.fit_transform(filtered_df["Symptoms"])
     y = filtered_df["Disease"]
 
-    model = RandomForestClassifier(n_estimators=100, random_state=42)
-    model.fit(X, y)
+    X_train, X_test, y_train, y_test = train_test_split(
+        X, y, test_size=0.2, random_state=42
+    )
+
+    model = RandomForestClassifier(n_estimators=200, random_state=42)
+    model.fit(X_train, y_train)
+
+    y_pred = model.predict(X_test)
+
+    acc = accuracy_score(y_test, y_pred)
+    print(f"\n Model Accuracy: {acc:.4f} ({acc*100:.2f}%)\n")
+
+    print("Classification Report:")
+    print(classification_report(y_test, y_pred))
 
     joblib.dump(model, MODEL_FILE)
     joblib.dump(local_mlb, MLB_FILE)
+
     print("Model trained and saved.")
     return model, local_mlb
+
 
 
 def load_model_and_data():
@@ -107,11 +122,9 @@ with app.app_context():
 
 def get_top_prescriptions(disease):
     """Finds the top 3 most common prescriptions for a given disease."""
-    # This check is important if the data file failed to load
     if medical_df is None or medical_df.empty:
         return ["Prescription data unavailable."]
 
-    # Assumes prescription columns are named like 'Prescription_1', 'Prescription_2' etc.
     prescription_cols = [col for col in medical_df.columns if col.startswith("Prescription")]
     if not prescription_cols:
         return ["No prescription columns in dataset."]
@@ -139,10 +152,10 @@ def predict_disease(symptoms):
         symptoms = [str(s).strip().lower() for s in symptoms if str(s).strip()]
         input_vec = mlb.transform([symptoms])
         prediction = model.predict(input_vec)[0]
+        
         prediction_proba = model.predict_proba(input_vec)
         confidence = max(prediction_proba[0])
-
-        # NEW: Get top prescriptions for the predicted disease
+        
         top_prescriptions = get_top_prescriptions(prediction)
 
         return prediction, f"{confidence:.2%}", top_prescriptions
@@ -234,7 +247,6 @@ def manage_appointments():
         data = request.json
         symptoms = [s.strip() for s in data.get('symptoms', '').split(',') if s.strip()]
 
-        # UPDATED: Now receives three values
         predicted_disease, confidence, prescriptions = predict_disease(symptoms)
 
         new_patient = {
@@ -246,7 +258,7 @@ def manage_appointments():
             'symptoms': symptoms,
             'predicted_disease': predicted_disease,
             'confidence': confidence,
-            'common_prescriptions': prescriptions,  # ADDED: New field for prescriptions
+            'common_prescriptions': prescriptions,
             'status': 'pending'
         }
         patients_db.append(new_patient)
@@ -349,7 +361,7 @@ def generate_pdf_for_patient(patient_id):
         # Use patient data to generate PDF
         pdf_buffer = generate_prescription_pdf(
             patient_name=patient['name'],
-            doctor_name='Dr. System',  # You can modify this
+            doctor_name='Dr. System',
             prescription=patient.get('common_prescriptions', []),
             diagnosis=patient.get('predicted_disease', 'Unknown')
         )

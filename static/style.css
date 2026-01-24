@@ -1003,3 +1003,36 @@ label {
         display:none;
     }
 }
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(35% 35% at 85% 70%, rgba(128,237,153,0.22), transparent 60%),
+    radial-gradient(35% 35% at 15% 75%, rgba(56,163,165,0.18), transparent 60%);
+  z-index:1;
+  pointer-events:none;
+}
+
+.btn-primary:hover{
+  box-shadow: 0 20px 45px rgba(128,237,153,0.22);
+  border-color: rgba(128,237,153,0.55);
+}
+
+.btn-secondary{
+  background: linear-gradient(135deg, #80ED99 0%, #48CAE4 100%);
+}
+
+.btn-secondary:hover{
+  box-shadow: 0 20px 45px rgba(128,237,153,0.28);
+}
+
+.feature-card:hover{
+  border-color: rgba(128,237,153,0.55);
+  box-shadow: 0 25px 55px rgba(0,0,0,0.28), 0 0 0 1px rgba(128,237,153,0.15);
+}
+
+.feature-card::before{
+  background: linear-gradient(90deg, #48CAE4, #80ED99);
+}
