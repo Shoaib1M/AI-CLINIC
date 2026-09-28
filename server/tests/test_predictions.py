@@ -1,8 +1,6 @@
 from app import create_app
-from app.extensions import db
-from app.models import User
 
-from .conftest import future
+from .conftest import add_user, future
 
 
 def test_predict_known_symptoms(client, doctor):
@@ -53,11 +51,7 @@ def test_model_card_is_public(client):
 
 def test_missing_model_degrades_gracefully(tmp_path):
     app = create_app("testing", {"MODEL_DIR": tmp_path})
-    with app.app_context():
-        user = User(username="frontdesk1", full_name="Sarah Johnson", role="frontdesk")
-        user.set_password("desk-pass-123")
-        db.session.add(user)
-        db.session.commit()
+    add_user(app, "frontdesk1", "Sarah Johnson", "frontdesk", "desk-pass-123")
     client = app.test_client()
     headers = {"Authorization": "Bearer " + client.post("/api/auth/login", json={"username": "frontdesk1", "password": "desk-pass-123"}).json["data"]["token"]}
 

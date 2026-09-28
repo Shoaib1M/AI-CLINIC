@@ -13,7 +13,7 @@ from flask import current_app
 from ..errors import ServiceUnavailable, UnprocessableInput
 from ..ml import DiseasePredictor, ModelArtifactError, NoKnownSymptomsError
 from ..ml.preprocessing import SYMPTOM_ALIASES
-from ..models import Prediction
+from ..models import utcnow
 
 logger = logging.getLogger(__name__)
 
@@ -77,39 +77,45 @@ def predict(symptoms: list[str], top_k: int = 3) -> dict:
     return {**result.to_dict(), "disclaimer": DISCLAIMER}
 
 
-def prediction_record_for(symptoms: list[str]) -> Prediction:
-    """Build the Prediction row stored with a new appointment. Never raises for
-    model problems: booking an appointment must not depend on the model."""
+def prediction_record_for(symptoms: list[str]) -> dict:
+    """Build the prediction sub-document stored inside a new appointment.
+
+    Never raises for model problems: booking an appointment must not depend
+    on the model.
+    """
+    base = {"created_at": utcnow(), "unknown_symptoms": [], "warnings": []}
     predictor = get_predictor(required=False)
     if predictor is None:
-        return Prediction(status="model_unavailable", unknown_symptoms=[], warnings=[])
+        return {**base, "status": "model_unavailable"}
 
     try:
         result = predictor.predict(symptoms)
     except NoKnownSymptomsError as exc:
-        return Prediction(
-            status="no_known_symptoms",
-            unknown_symptoms=exc.unknown,
-            model_version=predictor.version,
-            warnings=["None of the symptoms are recognised by the model, so no suggestion was made."],
-        )
+        return {
+            **base,
+            "status": "no_known_symptoms",
+            "unknown_symptoms": exc.unknown,
+            "model_version": predictor.version,
+            "warnings": ["None of the symptoms are recognised by the model, so no suggestion was made."],
+        }
     except Exception:  # defensive: log and continue booking
         logger.exception("prediction_failed")
-        return Prediction(status="model_unavailable", warnings=["The model failed on this input."])
+        return {**base, "status": "model_unavailable", "warnings": ["The model failed on this input."]}
 
     logger.info("prediction_made", extra={"prediction": result.prediction, "confidence": result.confidence})
-    return Prediction(
-        status="ok",
-        predicted_disease=result.prediction,
-        confidence=result.confidence,
-        confidence_level=result.confidence_level,
-        top_predictions=[{"disease": r.disease, "probability": r.probability} for r in result.top_predictions],
-        recognized_symptoms=result.recognized_symptoms,
-        unknown_symptoms=result.unknown_symptoms,
-        reference_treatments=result.reference_treatments,
-        warnings=result.warnings,
-        model_version=result.model_version,
-    )
+    return {
+        **base,
+        "status": "ok",
+        "predicted_disease": result.prediction,
+        "confidence": result.confidence,
+        "confidence_level": result.confidence_level,
+        "top_predictions": [{"disease": r.disease, "probability": r.probability} for r in result.top_predictions],
+        "recognized_symptoms": result.recognized_symptoms,
+        "unknown_symptoms": result.unknown_symptoms,
+        "reference_treatments": result.reference_treatments,
+        "warnings": result.warnings,
+        "model_version": result.model_version,
+    }
 
 
 def model_info() -> dict:

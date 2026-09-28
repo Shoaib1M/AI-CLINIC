@@ -1,30 +1,18 @@
-from sqlalchemy import String
-from sqlalchemy.orm import Mapped, mapped_column, relationship
+"""Patients (collection `patients`).
 
-from ..extensions import db
-from .base import TimestampMixin, iso
+    {_id: int, full_name, full_name_lower, phone, created_at, updated_at}
+
+A unique index on (full_name_lower, phone) means one person is one record;
+phone alone is not unique because family members often share a number.
+"""
+
+from .base import iso
 
 
-class Patient(TimestampMixin, db.Model):
-    """A person who visits the clinic. One patient has many appointments.
-
-    Phone is indexed but not unique: family members often share a number.
-    """
-
-    __tablename__ = "patients"
-
-    id: Mapped[int] = mapped_column(primary_key=True)
-    full_name: Mapped[str] = mapped_column(String(100), index=True)
-    phone: Mapped[str] = mapped_column(String(20), index=True)
-
-    appointments = relationship(
-        "Appointment", back_populates="patient", order_by="Appointment.scheduled_at.desc()"
-    )
-
-    def to_dict(self) -> dict:
-        return {
-            "id": self.id,
-            "full_name": self.full_name,
-            "phone": self.phone,
-            "created_at": iso(self.created_at),
-        }
+def patient_to_dict(doc: dict) -> dict:
+    return {
+        "id": doc["_id"],
+        "full_name": doc["full_name"],
+        "phone": doc["phone"],
+        "created_at": iso(doc.get("created_at")),
+    }

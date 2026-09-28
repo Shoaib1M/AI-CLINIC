@@ -7,21 +7,23 @@ from datetime import datetime, timedelta
 import click
 
 from .errors import ValidationError
-from .extensions import db
-from .models import Appointment, Patient, Prescription, User
+from .extensions import ensure_indexes, mongo, next_id
+from .models import User, utcnow
 from .services.prediction_service import prediction_record_for
 from .utils.validators import validate_new_user
 
 
-def _create_user(username, full_name, role, password) -> User:
+def _create_user(username, full_name, role, password) -> dict:
+    """Create the account, or update name/role/password if the username exists."""
     validate_new_user(username, full_name, role, password)
-    user = db.session.scalar(db.select(User).filter_by(username=username))
-    if user is None:
-        user = User(username=username)
-        db.session.add(user)
-    user.full_name, user.role = full_name, role
-    user.set_password(password)
-    db.session.commit()
+    now = utcnow()
+    fields = {"full_name": full_name, "role": role, "password_hash": User.hash_password(password), "updated_at": now}
+    existing = mongo.db.users.find_one({"username": username})
+    if existing:
+        mongo.db.users.update_one({"_id": existing["_id"]}, {"$set": fields})
+        return {**existing, **fields}
+    user = {"_id": next_id("users"), "username": username, "is_active": True, "created_at": now, **fields}
+    mongo.db.users.insert_one(user)
     return user
 
 
@@ -45,9 +47,9 @@ DEMO_PATIENTS = [
 def register(app) -> None:
     @app.cli.command("init-db")
     def init_db():
-        """Create all database tables."""
-        db.create_all()
-        click.echo("Database tables created.")
+        """Create the MongoDB indexes (safe to run repeatedly)."""
+        ensure_indexes(mongo.db)
+        click.echo(f"Indexes ready in database '{app.config['MONGODB_DB']}'.")
 
     @app.cli.command("create-user")
     @click.argument("username")
@@ -60,7 +62,7 @@ def register(app) -> None:
             user = _create_user(username, full_name, role, password)
         except ValidationError as exc:
             raise click.ClickException(f"{exc.message} {exc.details}") from exc
-        click.echo(f"Saved {user.role} account '{user.username}'.")
+        click.echo(f"Saved {user['role']} account '{user['username']}'.")
 
     @app.cli.command("seed-demo")
     @click.option("--with-appointments", is_flag=True, help="Also create sample patients and appointments.")
@@ -72,6 +74,7 @@ def register(app) -> None:
             raise click.ClickException(
                 "Set DEMO_DOCTOR_PASSWORD and DEMO_FRONTDESK_PASSWORD (see .env.example) before seeding."
             )
+        ensure_indexes(mongo.db)
         try:
             doctor = _create_user("doctor1", "Dr. Evelyn Reed", "doctor", doctor_pw)
             frontdesk = _create_user("frontdesk1", "Sarah Johnson", "frontdesk", frontdesk_pw)
@@ -81,7 +84,7 @@ def register(app) -> None:
 
         if not with_appointments:
             return
-        if db.session.scalar(db.select(db.func.count()).select_from(Appointment)):
+        if mongo.db.appointments.count_documents({}, limit=1):
             click.echo("Appointments already exist; skipping sample data.")
             return
 
@@ -89,32 +92,50 @@ def register(app) -> None:
         now = datetime.now().replace(minute=0, second=0, microsecond=0)
         types = ["regular_checkup", "follow_up", "consultation", "emergency"]
         for i, (name, phone, symptoms) in enumerate(DEMO_PATIENTS):
-            patient = Patient(full_name=name, phone=phone)
-            offset = timedelta(days=i // 4 - 1, hours=9 + (i % 4) * 2 - now.hour)
+            created = utcnow()
+            patient = {
+                "_id": next_id("patients"),
+                "full_name": name,
+                "full_name_lower": name.lower(),
+                "phone": phone,
+                "created_at": created,
+                "updated_at": created,
+            }
+            mongo.db.patients.insert_one(patient)
             status = "completed" if i in (0, 3) else "cancelled" if i == 6 else "pending"
-            appointment = Appointment(
-                patient=patient,
-                scheduled_at=now + offset,
-                appointment_type=rng.choice(types),
-                status=status,
-                symptoms=symptoms,
-                created_by=frontdesk,
-            )
-            appointment.prediction = prediction_record_for(symptoms)
-            db.session.add(appointment)
+            prediction = prediction_record_for(symptoms)
+            appointment = {
+                "_id": next_id("appointments"),
+                "patient_id": patient["_id"],
+                "patient_name": name,
+                "patient_name_lower": name.lower(),
+                "patient_phone": phone,
+                "scheduled_at": now + timedelta(days=i // 4 - 1, hours=9 + (i % 4) * 2 - now.hour),
+                "appointment_type": rng.choice(types),
+                "status": status,
+                "symptoms": symptoms,
+                "prediction": prediction,
+                "prescription_count": 1 if status == "completed" else 0,
+                "created_by_id": frontdesk["_id"],
+                "created_at": created,
+                "updated_at": created,
+            }
+            mongo.db.appointments.insert_one(appointment)
             if status == "completed":
-                disease = appointment.prediction.predicted_disease or "Under evaluation"
-                db.session.add(
-                    Prescription(
-                        appointment=appointment,
-                        doctor=doctor,
-                        diagnosis=f"{disease} (clinically suspected)",
-                        medications=[
+                disease = prediction.get("predicted_disease") or "Under evaluation"
+                mongo.db.prescriptions.insert_one(
+                    {
+                        "_id": next_id("prescriptions"),
+                        "appointment_id": appointment["_id"],
+                        "doctor_id": doctor["_id"],
+                        "diagnosis": f"{disease} (clinically suspected)",
+                        "medications": [
                             {"name": "Paracetamol 500 mg", "dosage": "1 tablet", "instructions": "Every 6 hours if fever > 38 °C. Max 4 per day."},
                             {"name": "Oral rehydration", "dosage": None, "instructions": "Drink fluids regularly; rest for 3 days."},
                         ],
-                        notes="Return if symptoms worsen or persist beyond 5 days.",
-                    )
+                        "notes": "Return if symptoms worsen or persist beyond 5 days.",
+                        "created_at": created,
+                        "updated_at": created,
+                    }
                 )
-        db.session.commit()
         click.echo(f"Created {len(DEMO_PATIENTS)} sample appointments.")

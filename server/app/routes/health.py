@@ -1,7 +1,6 @@
 from flask import Blueprint
-from sqlalchemy import text
 
-from ..extensions import db
+from ..extensions import mongo
 from ..services.prediction_service import get_predictor
 from ..utils.responses import ok
 
@@ -12,7 +11,7 @@ bp = Blueprint("health", __name__)
 def health():
     """Liveness/readiness probe. Public; exposes no data."""
     try:
-        db.session.execute(text("SELECT 1"))
+        mongo.db.command("ping")
         database = "ok"
     except Exception:
         database = "unavailable"

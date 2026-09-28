@@ -19,7 +19,6 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
 from reportlab.platypus import HRFlowable, KeepTogether, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
-from ..models import Prescription
 
 INK = colors.HexColor("#0f172a")
 MUTED = colors.HexColor("#64748b")
@@ -70,12 +69,14 @@ def _info_block(label: str, rows: list[tuple[str, str]], s) -> list:
     return items
 
 
-def build_prescription_pdf(prescription: Prescription, clinic_name: str, clinic_address: str) -> bytes:
+def build_prescription_pdf(
+    prescription: dict, appointment: dict, patient: dict, doctor: dict | None, clinic_name: str, clinic_address: str
+) -> bytes:
+    """Render one prescription. Arguments are the raw MongoDB documents."""
     s = _styles()
-    appointment = prescription.appointment
-    patient = appointment.patient
-    doctor = prescription.doctor
-    issued = prescription.created_at
+    rx_id = prescription["_id"]
+    doctor_name = doctor["full_name"] if doctor else ""
+    issued = prescription["created_at"]
     generated_at = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M UTC")
 
     buffer = io.BytesIO()
@@ -86,7 +87,7 @@ def build_prescription_pdf(prescription: Prescription, clinic_name: str, clinic_
         rightMargin=18 * mm,
         topMargin=16 * mm,
         bottomMargin=22 * mm,
-        title=f"Prescription RX-{prescription.id:06d}",
+        title=f"Prescription RX-{rx_id:06d}",
         author=clinic_name,
     )
     width = doc.width - 12  # the page frame has 6pt padding on each side
@@ -98,7 +99,7 @@ def build_prescription_pdf(prescription: Prescription, clinic_name: str, clinic_
             [Paragraph(_esc(clinic_name), s["clinic"]), Paragraph(_esc(clinic_address), s["muted"])],
             [
                 Paragraph("PRESCRIPTION", s["doc_title"]),
-                Paragraph(f"No. RX-{prescription.id:06d}", s["right"]),
+                Paragraph(f"No. RX-{rx_id:06d}", s["right"]),
                 Paragraph(f"Issued {issued:%d %b %Y, %H:%M} UTC", s["right"]),
             ],
         ]],
@@ -110,17 +111,17 @@ def build_prescription_pdf(prescription: Prescription, clinic_name: str, clinic_
     # Patient / appointment / prescriber.
     info = Table(
         [[
-            _info_block("Patient", [("Name", patient.full_name), ("Phone", patient.phone), ("Patient ID", f"P-{patient.id:05d}")], s),
+            _info_block("Patient", [("Name", patient["full_name"]), ("Phone", patient["phone"]), ("Patient ID", f"P-{patient['_id']:05d}")], s),
             _info_block(
                 "Appointment",
                 [
-                    ("Date", appointment.scheduled_at.strftime("%d %b %Y, %H:%M")),
-                    ("Type", APPOINTMENT_TYPE_LABELS.get(appointment.appointment_type, appointment.appointment_type)),
-                    ("Appointment ID", f"A-{appointment.id:05d}"),
+                    ("Date", appointment["scheduled_at"].strftime("%d %b %Y, %H:%M")),
+                    ("Type", APPOINTMENT_TYPE_LABELS.get(appointment["appointment_type"], appointment["appointment_type"])),
+                    ("Appointment ID", f"A-{appointment['_id']:05d}"),
                 ],
                 s,
             ),
-            _info_block("Prescriber", [("Name", doctor.full_name if doctor else "—"), ("Role", "Physician")], s),
+            _info_block("Prescriber", [("Name", doctor_name or "—"), ("Role", "Physician")], s),
         ]],
         colWidths=[width / 3] * 3,
     )
@@ -128,10 +129,10 @@ def build_prescription_pdf(prescription: Prescription, clinic_name: str, clinic_
     story += [info, HRFlowable(width="100%", thickness=0.6, color=RULE)]
 
     # Clinician-authored content.
-    story += [Paragraph("DIAGNOSIS", s["section"]), Paragraph(_esc(prescription.diagnosis), s["body"])]
+    story += [Paragraph("DIAGNOSIS", s["section"]), Paragraph(_esc(prescription["diagnosis"]), s["body"])]
 
     rows = [[Paragraph(h, s["cell_head"]) for h in ("#", "Medication", "Dosage", "Instructions")]]
-    for i, med in enumerate(prescription.medications or [], start=1):
+    for i, med in enumerate(prescription.get("medications") or [], start=1):
         rows.append([
             Paragraph(str(i), s["cell"]),
             Paragraph(f"<b>{_esc(med.get('name'))}</b>", s["cell"]),
@@ -148,24 +149,24 @@ def build_prescription_pdf(prescription: Prescription, clinic_name: str, clinic_
     ]))
     story += [Paragraph("MEDICATIONS &amp; INSTRUCTIONS", s["section"]), meds]
 
-    if prescription.notes:
-        story += [Paragraph("CLINICIAN NOTES", s["section"]), Paragraph(_esc(prescription.notes).replace("\n", "<br/>"), s["body"])]
+    if prescription.get("notes"):
+        story += [Paragraph("CLINICIAN NOTES", s["section"]), Paragraph(_esc(prescription["notes"]).replace("\n", "<br/>"), s["body"])]
 
     signature = Table(
-        [[Paragraph("", s["body"]), Paragraph(f"{_esc(doctor.full_name if doctor else '')}<br/><font color='#64748b' size='8'>Prescribing clinician — signature</font>", s["body"])]],
+        [[Paragraph("", s["body"]), Paragraph(f"{_esc(doctor_name)}<br/><font color='#64748b' size='8'>Prescribing clinician — signature</font>", s["body"])]],
         colWidths=[width * 0.55, width * 0.45],
     )
     signature.setStyle(TableStyle([("LINEABOVE", (1, 0), (1, 0), 0.8, INK), ("TOPPADDING", (0, 0), (-1, -1), 4), ("LEFTPADDING", (0, 0), (-1, -1), 0)]))
     story += [Spacer(1, 28), KeepTogether(signature)]
 
     # AI decision-support note, visually and textually separate from the prescription.
-    prediction = appointment.prediction
-    if prediction is not None and prediction.status == "ok":
+    prediction = appointment.get("prediction") or {}
+    if prediction.get("status") == "ok":
         text = (
             "<b>Decision-support note — not part of this prescription.</b> At intake, the AI-CLINIC "
-            f"model (version {_esc(prediction.model_version)}) suggested "
-            f"<b>{_esc(prediction.predicted_disease)}</b> with a model confidence of "
-            f"{prediction.confidence:.0%} (the share of decision trees in agreement, not a clinical "
+            f"model (version {_esc(prediction.get('model_version'))}) suggested "
+            f"<b>{_esc(prediction['predicted_disease'])}</b> with a model confidence of "
+            f"{prediction['confidence']:.0%} (the share of decision trees in agreement, not a clinical "
             "probability). The diagnosis and medications above were written by the prescribing clinician."
         )
         box = Table([[Paragraph(text, s["note"])]], colWidths=[width])

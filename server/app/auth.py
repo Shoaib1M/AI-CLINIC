@@ -15,7 +15,7 @@ from flask import current_app, g, request
 from werkzeug.security import generate_password_hash
 
 from .errors import AuthenticationError, PermissionDenied
-from .extensions import db
+from .extensions import mongo
 from .models import User
 
 logger = logging.getLogger(__name__)
@@ -26,10 +26,11 @@ _DUMMY_HASH = generate_password_hash("dummy-password-for-timing")
 
 
 def authenticate(username: str, password: str) -> User:
-    user = db.session.scalar(db.select(User).filter_by(username=username))
-    if user is None:
-        User(password_hash=_DUMMY_HASH).check_password(password)
+    doc = mongo.db.users.find_one({"username": username})
+    if doc is None:
+        User(0, "", "", "", _DUMMY_HASH).check_password(password)
         raise AuthenticationError("Invalid username or password.", code="INVALID_CREDENTIALS")
+    user = User.from_doc(doc)
     if not user.check_password(password) or not user.is_active:
         raise AuthenticationError("Invalid username or password.", code="INVALID_CREDENTIALS")
     return user
@@ -60,7 +61,8 @@ def _user_from_request() -> User:
     except jwt.InvalidTokenError as exc:
         raise AuthenticationError("Invalid authentication token.", code="INVALID_TOKEN") from exc
 
-    user = db.session.get(User, int(claims["sub"])) if claims["sub"].isdigit() else None
+    doc = mongo.db.users.find_one({"_id": int(claims["sub"])}) if claims["sub"].isdigit() else None
+    user = User.from_doc(doc) if doc else None
     if user is None or not user.is_active:
         raise AuthenticationError("Invalid authentication token.", code="INVALID_TOKEN")
     return user
