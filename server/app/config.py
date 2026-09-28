@@ -35,27 +35,27 @@ class BaseConfig:
     DEBUG = False
     TESTING = False
 
-    SQLALCHEMY_DATABASE_URI = os.getenv(
-        "DATABASE_URL", f"sqlite:///{SERVER_DIR / 'instance' / 'ai_clinic.db'}"
-    )
+    # `or` (not a getenv default) so an empty value copied from .env.example
+    # falls back to the default instead of becoming an empty URL.
+    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL") or f"sqlite:///{SERVER_DIR / 'instance' / 'ai_clinic.db'}"
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     JWT_SECRET = os.getenv("JWT_SECRET", "")
     JWT_ALGORITHM = "HS256"
-    JWT_EXPIRES_MINUTES = int(os.getenv("JWT_EXPIRES_MINUTES", "480"))
+    JWT_EXPIRES_MINUTES = int(os.getenv("JWT_EXPIRES_MINUTES") or 480)
 
     MODEL_DIR = _resolve_path(os.getenv("MODEL_DIR"), REPO_ROOT / "models")
     DATASET_PATH = _resolve_path(
         os.getenv("DATASET_PATH"), REPO_ROOT / "data" / "updated_synthetic_medical_dataset.csv"
     )
 
-    CORS_ORIGINS = _split_csv(os.getenv("CORS_ORIGINS", "http://localhost:5173"))
+    CORS_ORIGINS = _split_csv(os.getenv("CORS_ORIGINS") or "http://localhost:5173")
 
-    CLINIC_NAME = os.getenv("CLINIC_NAME", "AI-CLINIC Demo Clinic")
-    CLINIC_ADDRESS = os.getenv("CLINIC_ADDRESS", "For demonstration purposes only")
+    CLINIC_NAME = os.getenv("CLINIC_NAME") or "AI-CLINIC Demo Clinic"
+    CLINIC_ADDRESS = os.getenv("CLINIC_ADDRESS") or "For demonstration purposes only"
 
-    LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
-    LOG_FORMAT = os.getenv("LOG_FORMAT", "text")  # "text" or "json"
+    LOG_LEVEL = os.getenv("LOG_LEVEL") or "INFO"
+    LOG_FORMAT = os.getenv("LOG_FORMAT") or "text"  # "text" or "json"
 
     # Reject oversized request bodies early (the API only accepts small JSON).
     MAX_CONTENT_LENGTH = 64 * 1024
@@ -86,7 +86,7 @@ CONFIGS = {
 
 
 def get_config(name: str | None = None) -> type[BaseConfig]:
-    name = name or os.getenv("APP_ENV", "development")
+    name = name or os.getenv("APP_ENV") or "development"
     try:
         return CONFIGS[name]
     except KeyError as exc:
