@@ -21,7 +21,7 @@ const CAPABILITIES = [
   { icon: Sparkles, title: 'AI decision support', text: 'A random-forest model ranks the three most likely conditions and states how much its trees agree.' },
   { icon: ClipboardList, title: 'Doctor queue', text: 'Search, filter and sort patients; complete or cancel visits with a clear status history.' },
   { icon: FileText, title: 'Doctor-authored prescriptions', text: 'Doctors write the prescription. The system renders it as a PDF that keeps AI output clearly separate.' },
-  { icon: Database, title: 'Persistent records', text: 'Patients, appointments, predictions and prescriptions are stored in SQLite through SQLAlchemy.' },
+  { icon: Database, title: 'Persistent records', text: 'Patients, appointments, predictions and prescriptions are stored in MongoDB (Atlas or self-hosted).' },
   { icon: KeyRound, title: 'Role-based access', text: 'JWT sign-in with separate front desk and doctor permissions, enforced by the API.' },
 ]
 
@@ -36,7 +36,7 @@ const STEPS = [
 const STACK = [
   ['Frontend', 'React 19, Vite, Tailwind CSS, React Router, TanStack Query'],
   ['API', 'Flask 3 blueprints, JWT (PyJWT), server-side validation'],
-  ['Data', 'SQLite with SQLAlchemy 2 ORM models'],
+  ['Data', 'MongoDB (Atlas) via PyMongo, with indexes and atomic counters'],
   ['ML', 'scikit-learn RandomForestClassifier + MultiLabelBinarizer, joblib'],
   ['Documents', 'ReportLab (Platypus) prescription PDFs'],
   ['Quality', 'pytest API/ML/PDF suites, Vitest + Testing Library'],

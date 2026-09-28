@@ -1,14 +1,14 @@
 """AI-CLINIC REST API — application factory."""
 
 import logging
-from pathlib import Path
 
 from flask import Flask
+from pymongo.errors import PyMongoError
 
 from . import cli
-from .config import finalize_secrets, get_config
+from .config import finalize_secrets, get_config, require_database_uri
 from .errors import register_error_handlers
-from .extensions import cors, db
+from .extensions import cors, ensure_indexes, mongo
 from .logging_config import configure_logging
 from .routes import register_blueprints
 from .services import prediction_service
@@ -24,9 +24,9 @@ def create_app(config_name: str | None = None, overrides: dict | None = None) ->
 
     configure_logging(app.config["LOG_LEVEL"], app.config["LOG_FORMAT"])
     finalize_secrets(app)
-    _ensure_sqlite_directory(app.config["SQLALCHEMY_DATABASE_URI"])
+    require_database_uri(app)
 
-    db.init_app(app)
+    mongo.init_app(app)
     cors.init_app(
         app,
         resources={r"/api/*": {"origins": app.config["CORS_ORIGINS"]}},
@@ -45,10 +45,17 @@ def create_app(config_name: str | None = None, overrides: dict | None = None) ->
         response.headers.setdefault("Cache-Control", "no-store")
         return response
 
-    with app.app_context():
-        # SQLite + create_all keeps setup to zero steps. A production system
-        # would manage schema changes with migrations (Alembic).
-        db.create_all()
+    # MongoDB creates collections on first write; indexes are the only schema
+    # to set up. If the cluster is unreachable the API still starts, reports
+    # "database: unavailable" on /api/health and answers data requests with 503.
+    try:
+        ensure_indexes(app.extensions["mongo_db"])
+        logger.info("database_connected", extra={"database": app.config["MONGODB_DB"]})
+    except PyMongoError as exc:
+        logger.error(
+            "database_unreachable",
+            extra={"reason": str(exc)[:300], "hint": "check MONGODB_URI and Atlas Network Access (IP allowlist)"},
+        )
 
     # Load the ML model once per process. Training is a separate offline step.
     prediction_service.init_app(app)
@@ -56,8 +63,3 @@ def create_app(config_name: str | None = None, overrides: dict | None = None) ->
     logger.info("app_started", extra={"env": app.config["APP_ENV"]})
     return app
 
-
-def _ensure_sqlite_directory(uri: str) -> None:
-    prefix = "sqlite:///"
-    if uri.startswith(prefix) and ":memory:" not in uri:
-        Path(uri[len(prefix):]).parent.mkdir(parents=True, exist_ok=True)

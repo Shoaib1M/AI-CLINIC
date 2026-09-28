@@ -1,10 +1,11 @@
+import os
+import uuid
 from datetime import datetime, timedelta
 
 import pytest
 
 from app import create_app
-from app.extensions import db
-from app.models import User
+from app.cli import _create_user
 
 PASSWORDS = {"doctor1": "doctor-pass-123", "frontdesk1": "desk-pass-123"}
 
@@ -13,21 +14,24 @@ def future(days: int = 1, hour: int = 10) -> str:
     return (datetime.now() + timedelta(days=days)).replace(hour=hour, minute=30).strftime("%Y-%m-%dT%H:%M")
 
 
+def add_user(app, username, full_name, role, password):
+    with app.app_context():
+        return _create_user(username, full_name, role, password)
+
+
 @pytest.fixture
 def app():
-    app = create_app("testing")
-    with app.app_context():
-        for username, name, role in (
-            ("doctor1", "Dr. Evelyn Reed", "doctor"),
-            ("frontdesk1", "Sarah Johnson", "frontdesk"),
-        ):
-            user = User(username=username, full_name=name, role=role)
-            user.set_password(PASSWORDS[username])
-            db.session.add(user)
-        db.session.commit()
+    # By default TestingConfig uses mongomock: each app gets its own empty
+    # in-memory database. With TEST_MONGODB_URI set, every test instead runs
+    # against a throwaway database on that real server, dropped afterwards.
+    real_uri = os.getenv("TEST_MONGODB_URI")
+    overrides = {"MONGODB_URI": real_uri, "MONGODB_DB": f"ai_clinic_test_{uuid.uuid4().hex[:8]}"} if real_uri else None
+    app = create_app("testing", overrides)
+    add_user(app, "doctor1", "Dr. Evelyn Reed", "doctor", PASSWORDS["doctor1"])
+    add_user(app, "frontdesk1", "Sarah Johnson", "frontdesk", PASSWORDS["frontdesk1"])
     yield app
-    with app.app_context():
-        db.drop_all()
+    if real_uri:
+        app.extensions["mongo_client"].drop_database(overrides["MONGODB_DB"])
 
 
 @pytest.fixture

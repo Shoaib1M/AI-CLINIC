@@ -35,10 +35,11 @@ class BaseConfig:
     DEBUG = False
     TESTING = False
 
-    # `or` (not a getenv default) so an empty value copied from .env.example
-    # falls back to the default instead of becoming an empty URL.
-    SQLALCHEMY_DATABASE_URI = os.getenv("DATABASE_URL") or f"sqlite:///{SERVER_DIR / 'instance' / 'ai_clinic.db'}"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # MongoDB connection string, e.g. an Atlas "mongodb+srv://user:pass@cluster/..." URI.
+    # `or` (not a getenv default) so an empty value copied from .env.example counts as unset.
+    MONGODB_URI = os.getenv("MONGODB_URI") or ""
+    MONGODB_DB = os.getenv("MONGODB_DB") or "ai_clinic"
+    MONGODB_TIMEOUT_MS = int(os.getenv("MONGODB_TIMEOUT_MS") or 5000)
 
     JWT_SECRET = os.getenv("JWT_SECRET", "")
     JWT_ALGORITHM = "HS256"
@@ -69,7 +70,8 @@ class DevelopmentConfig(BaseConfig):
 class TestingConfig(BaseConfig):
     APP_ENV = "testing"
     TESTING = True
-    SQLALCHEMY_DATABASE_URI = "sqlite:///:memory:"
+    # In-memory MongoDB emulator (mongomock); each app gets a fresh database.
+    MONGODB_URI = "mongomock://localhost"
     JWT_SECRET = "test-secret-key-that-is-long-enough-for-hs256"
     LOG_LEVEL = "WARNING"
 
@@ -91,6 +93,14 @@ def get_config(name: str | None = None) -> type[BaseConfig]:
         return CONFIGS[name]
     except KeyError as exc:
         raise RuntimeError(f"Unknown APP_ENV '{name}'. Use one of: {', '.join(CONFIGS)}") from exc
+
+
+def require_database_uri(app) -> None:
+    if not app.config.get("MONGODB_URI"):
+        raise RuntimeError(
+            "MONGODB_URI is not set. Put your MongoDB connection string in .env "
+            "(see .env.example), e.g. mongodb+srv://USER:PASSWORD@cluster0.example.mongodb.net/"
+        )
 
 
 def finalize_secrets(app) -> None:

@@ -18,7 +18,7 @@ def list_appointments():
     query = validate_list_query(request.args)
     page = appointment_service.list_appointments(query)
     return ok(
-        [a.to_dict() for a in page.items],
+        page.items,
         meta={"page": page.page, "per_page": page.per_page, "total": page.total, "pages": page.pages},
     )
 
@@ -27,8 +27,7 @@ def list_appointments():
 @require_auth("frontdesk")
 def create_appointment():
     data = validate_appointment_create(json_body())
-    appointment = appointment_service.create_appointment(data, g.current_user)
-    return ok(appointment.to_dict(include_details=True), 201)
+    return ok(appointment_service.create_appointment(data, g.current_user), 201)
 
 
 @bp.get("/appointments/stats")
@@ -40,9 +39,9 @@ def appointment_stats():
 @bp.get("/appointments/<int:appointment_id>")
 @require_auth("doctor", "frontdesk")
 def get_appointment(appointment_id: int):
-    appointment = appointment_service.get_appointment(appointment_id)
-    data = appointment.to_dict(include_details=True)
-    data["visit_history"] = appointment_service.visit_history(appointment)
+    doc = appointment_service.get_appointment_doc(appointment_id)
+    data = appointment_service.appointment_detail(doc)
+    data["visit_history"] = appointment_service.visit_history(doc)
     return ok(data)
 
 
@@ -50,5 +49,4 @@ def get_appointment(appointment_id: int):
 @require_auth("doctor", "frontdesk")
 def update_appointment(appointment_id: int):
     changes = validate_appointment_update(json_body())
-    appointment = appointment_service.update_appointment(appointment_id, changes, g.current_user)
-    return ok(appointment.to_dict(include_details=True))
+    return ok(appointment_service.update_appointment(appointment_id, changes, g.current_user))

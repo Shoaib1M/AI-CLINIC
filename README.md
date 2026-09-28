@@ -1,6 +1,6 @@
 # AI-CLINIC
 
-A full-stack clinic workflow app: a **React** front end, a **Flask REST API**, **SQLite** persistence and a **scikit-learn** model that gives transparent, clearly-labelled decision support.
+A full-stack clinic workflow app: a **React** front end, a **Flask REST API**, **MongoDB** (Atlas) persistence and a **scikit-learn** model that gives transparent, clearly-labelled decision support.
 
 The front desk books visits and captures symptoms. A RandomForest model ranks the most likely conditions and says how much its trees agree. The doctor reviews the queue, decides, and writes a prescription that is exported as a PDF.
 
@@ -46,10 +46,10 @@ What changed and why is documented in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.m
 - **AI-assisted prediction.** Top-k ranked conditions with *model confidence* (tree agreement), confidence level, explicit unknown-symptom handling, and model version stamped on each prediction.
 - **Doctor-authored prescriptions.** Diagnosis, medications (name, dosage, instructions) and notes. AI and dataset hints are inserted only by an explicit click.
 - **Professional PDF export** (ReportLab) with the AI suggestion clearly separated from the prescription.
-- **Persistent database.** SQLite + SQLAlchemy: users, patients, appointments, predictions, prescriptions, with audit timestamps.
+- **Persistent database.** MongoDB (works with a free MongoDB Atlas cluster): users, patients, appointments with their embedded AI suggestion, and prescriptions, with indexes and audit timestamps.
 - **REST API** with JWT auth, server-side validation, consistent JSON errors, structured logging and a health check.
 - **Public model card** page with grouped cross-validation metrics, a per-class table and a confusion matrix.
-- **Tests.** 76 pytest tests (API, auth, validation, ML, PDF) and 19 Vitest tests (auth flow, API client, symptom input, booking flow).
+- **Tests.** 80 pytest tests (API, auth, validation, ML, PDF, database outage), which run on an in-memory MongoDB emulator or a real MongoDB server, and 19 Vitest tests (auth flow, API client, symptom input, booking flow).
 
 ## Architecture
 
@@ -64,8 +64,8 @@ What changed and why is documented in [docs/ARCHITECTURE.md](docs/ARCHITECTURE.m
                               │
         ┌─────────────────────┼──────────────────────┐
         │                     │                      │
-   SQLAlchemy models     ML predictor           PDF service
-   SQLite database       scikit-learn           ReportLab
+   PyMongo documents     ML predictor           PDF service
+   MongoDB (Atlas)       scikit-learn           ReportLab
                          (loaded once)
                               ▲
              offline: scripts/train_model.py → models/*.joblib
@@ -79,10 +79,10 @@ Flask does not render pages. The React app is a separate static site that calls 
 | --- | --- |
 | Frontend | React 19, Vite, Tailwind CSS 4, React Router, TanStack Query, lucide-react icons |
 | Backend | Python 3.11, Flask 3 (app factory + blueprints), PyJWT, flask-cors |
-| Database | SQLite via SQLAlchemy 2 / Flask-SQLAlchemy (any SQLAlchemy URL works) |
+| Database | MongoDB (Atlas or self-hosted) via PyMongo, Stable API v1 |
 | ML | scikit-learn `RandomForestClassifier` + `MultiLabelBinarizer`, pandas, joblib |
 | PDF | ReportLab (Platypus) |
-| Testing | pytest, pypdf · Vitest, Testing Library, jsdom |
+| Testing | pytest, pypdf, mongomock · Vitest, Testing Library, jsdom |
 
 ## ML model
 
@@ -119,7 +119,7 @@ ML preprocessing   known: fever, chills, vomiting, nausea · unknown: telepathy 
 RandomForest       200 trees vote → Malaria 0.92 · Gastroenteritis 0.06 · Influenza 0.01
    │
    ▼
-Database           Patient + Appointment(status=pending) + Prediction(model_version=rf-…)
+MongoDB            patients doc + appointments doc (status=pending, prediction embedded, model_version=rf-…)
    │
    ▼
 Doctor dashboard   queue row "Riya Kapoor · Malaria · 92% model confidence"
@@ -170,7 +170,9 @@ AI-CLINIC/
 
 ## Installation
 
-Prerequisites: **Python 3.10–3.12** and **Node.js 22.22+** (or 24+; required by React Router 8 and Vitest).
+Prerequisites: **Python 3.10–3.12**, **Node.js 22.22+** (or 24+; required by React Router 8 and Vitest), and a **MongoDB** database. A free [MongoDB Atlas](https://www.mongodb.com/atlas) cluster works; so does a local `mongod`.
+
+**Atlas setup (once):** in the Atlas UI, create a database user (Database Access), then allow your IP under **Network Access** (or `0.0.0.0/0` for a throwaway demo cluster). Copy the connection string from **Connect → Drivers**. If your IP is not allowed, connections simply time out, and the API reports `"database": "unavailable"` on `/api/health`.
 
 ```bash
 git clone https://github.com/Shoaib1M/AI-CLINIC.git
@@ -178,15 +180,17 @@ cd AI-CLINIC
 
 # 1. Configuration
 cp .env.example .env
-#    then edit .env: set JWT_SECRET, DEMO_DOCTOR_PASSWORD and DEMO_FRONTDESK_PASSWORD
-#    (generate a secret with: python -c "import secrets; print(secrets.token_urlsafe(48))")
+#    then edit .env and set:
+#      MONGODB_URI=mongodb+srv://<user>:<password>@<cluster>.mongodb.net/?retryWrites=true&w=majority
+#      JWT_SECRET=...   (python -c "import secrets; print(secrets.token_urlsafe(48))")
+#      DEMO_DOCTOR_PASSWORD=...  DEMO_FRONTDESK_PASSWORD=...   (8+ characters each)
 
 # 2. Backend
 cd server
 python -m venv .venv
 source .venv/bin/activate            # Windows: .venv\Scripts\activate
 pip install -r requirements-dev.txt  # requirements.txt alone for production
-flask --app wsgi seed-demo --with-appointments   # creates the DB, demo accounts and sample visits
+flask --app wsgi seed-demo --with-appointments   # creates indexes, demo accounts and sample visits
 
 # 3. Frontend
 cd ../client
@@ -204,7 +208,9 @@ The API reads `.env` at the repository root; real environment variables take pre
 | `APP_ENV` | `development` | `development`, `production` or `testing` |
 | `JWT_SECRET` | *(none)* | Token signing key, ≥ 32 chars. **Required in production.** In development a random one is generated per run (you get logged out on restart). |
 | `JWT_EXPIRES_MINUTES` | `480` | Token lifetime |
-| `DATABASE_URL` | `sqlite:///server/instance/ai_clinic.db` | Any SQLAlchemy URL |
+| `MONGODB_URI` | *(none)* | **Required.** MongoDB connection string (`mongodb+srv://…` for Atlas, `mongodb://localhost:27017` locally). Keep it in `.env`; never commit it. |
+| `MONGODB_DB` | `ai_clinic` | Database name inside the cluster (created on first write) |
+| `MONGODB_TIMEOUT_MS` | `5000` | How long to wait for the cluster before answering `503 DATABASE_UNAVAILABLE` |
 | `MODEL_DIR` | `models` | Model artifact directory |
 | `DATASET_PATH` | `data/updated_synthetic_medical_dataset.csv` | Training data |
 | `CORS_ORIGINS` | `http://localhost:5173` | Comma-separated browser origins allowed to call the API |
@@ -277,11 +283,15 @@ Restart the API after retraining. `model_metadata.json` records the version, dat
 ## Testing
 
 ```bash
-cd server && pytest          # 76 tests: API, auth, validation, persistence, ML inference/training, PDF
+cd server && pytest          # 79 tests on an in-memory MongoDB emulator (1 integration test skipped)
 cd client && npm test        # 19 tests: login + route guards, API client, symptom input, booking flow, prediction card
 ```
 
-The backend tests use an in-memory SQLite database and the committed model. The persistence test restarts the app on a temporary database file.
+By default the backend tests use **mongomock**, an in-memory MongoDB emulator, so they need no database or network. To run the **whole suite against a real MongoDB** instead (each test gets a throwaway `ai_clinic_test_*` database that is dropped afterwards), set `TEST_MONGODB_URI`. This also enables the integration test, which checks persistence across an app restart:
+
+```bash
+cd server && TEST_MONGODB_URI="mongodb+srv://<user>:<password>@<cluster>.mongodb.net/" pytest   # 80 tests
+```
 
 ## Deployment
 
@@ -292,13 +302,13 @@ The two halves deploy independently.
 ```bash
 cd server
 pip install -r requirements.txt
-APP_ENV=production JWT_SECRET=<48+ random chars> CORS_ORIGINS=https://your-frontend.example \
-  gunicorn -w 2 -b 0.0.0.0:$PORT wsgi:app
+APP_ENV=production JWT_SECRET=<48+ random chars> MONGODB_URI=<your connection string> \
+  CORS_ORIGINS=https://your-frontend.example gunicorn -w 2 -b 0.0.0.0:$PORT wsgi:app
 ```
 
 - Set `APP_ENV=production`. The app refuses to start without a strong `JWT_SECRET`, and debug is off.
 - Use `LOG_FORMAT=json` for log aggregation, and point your platform's health check at `/api/health`.
-- SQLite needs a **persistent disk**. On platforms with ephemeral filesystems, use PostgreSQL via `DATABASE_URL` (add a driver such as `psycopg[binary]`).
+- Set `MONGODB_URI` as a secret on the host. In Atlas, allow the host's outbound IPs under Network Access. The app keeps no local state, so any number of instances can share the cluster.
 - Create accounts with `flask --app wsgi create-user …` on the server.
 - Each gunicorn worker loads the model once (~1 MB) at startup.
 
@@ -318,13 +328,13 @@ Configure the host to serve `index.html` for unknown paths (SPA fallback) and ad
 - **Model confidence ≠ probability of disease.** It is tree agreement and is not calibrated.
 - **Reference treatments** come from the dataset (5 of 10 conditions have none) and are never used as prescriptions automatically.
 - **Authentication scope.** JWT in `localStorage`, with no refresh tokens, login rate limiting, password reset or MFA. Accounts are created from the CLI.
-- **Persistence.** SQLite without migrations (`create_all` on startup). Fine for a single-instance demo; not for concurrent multi-instance production.
+- **Persistence.** MongoDB without schema validation or migrations; the document shapes are enforced by the API's validators. Multi-document writes (patient then appointment) are not wrapped in a transaction.
 - **Single clinic, no doctor assignment.** All doctors share one queue.
 - **Not compliant with health-data regulations** (HIPAA, GDPR, DPDP): no encryption at rest, audit trail UI, consent or data-retention policy.
 
 ## Future improvements
 
-- Alembic migrations and PostgreSQL by default for deployment
+- MongoDB JSON-schema validators on each collection, and transactions for multi-document writes
 - HttpOnly cookie sessions with CSRF protection, refresh tokens, login rate limiting
 - Assign appointments to specific doctors; calendar/day view with slot conflict detection (`409`)
 - Record the doctor's final diagnosis to measure model agreement over time (a feedback loop)

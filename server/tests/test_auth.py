@@ -2,8 +2,7 @@ from datetime import datetime, timedelta, timezone
 
 import jwt
 
-from app.extensions import db
-from app.models import User
+from app.extensions import mongo
 
 
 def test_login_returns_token_and_user(client):
@@ -67,9 +66,7 @@ def test_unsigned_token_rejected(client):
 
 def test_deactivated_user_loses_access_immediately(app, client, doctor):
     with app.app_context():
-        user = db.session.scalar(db.select(User).filter_by(username="doctor1"))
-        user.is_active = False
-        db.session.commit()
+        mongo.db.users.update_one({"username": "doctor1"}, {"$set": {"is_active": False}})
     assert client.get("/api/auth/me", headers=doctor).status_code == 401
 
 

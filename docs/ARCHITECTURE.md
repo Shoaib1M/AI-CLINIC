@@ -18,12 +18,12 @@ AI-CLINIC is a single-page React application that talks to a Flask REST API over
 │  services/      business rules (status transitions, role rules,   │
 │     │           patient reuse, "booking never depends on the model")│
 │     ├──────────────────────┬─────────────────────┬────────────────┤
-│  models/ (SQLAlchemy)   ml/ (scikit-learn)     services/pdf_service │
-│  SQLite file            loaded once at start   ReportLab Platypus  │
+│  models/ (documents)    ml/ (scikit-learn)     services/pdf_service │
+│  PyMongo → MongoDB      loaded once at start   ReportLab Platypus  │
 └───────────────────────────────────────────────────────────────────┘
         ▲                          ▲
         │                          │ reads artifacts (never trains)
-  server/instance/ai_clinic.db     models/*.joblib + model_metadata.json
+  MongoDB Atlas cluster            models/*.joblib + model_metadata.json
                                    ▲
                                    │ written by the offline pipeline
                         server/scripts/train_model.py ← data/*.csv
@@ -34,31 +34,40 @@ AI-CLINIC is a single-page React application that talks to a Flask REST API over
 1. `NewAppointment.jsx` validates the form client-side for fast feedback, then calls `useCreateAppointment()` → `api.createAppointment()` → `POST /api/appointments` with the JWT.
 2. `routes/appointments.py` is decorated `@require_auth("frontdesk")`. The decorator verifies the token's signature and expiry, loads the user from the DB, and checks the role.
 3. `validate_appointment_create()` re-checks every field. It reports all errors at once, as `{"details": {"patient.phone": …}}`, which the form maps back onto its inputs.
-4. `appointment_service.create_appointment()` reuses or creates the `Patient`, creates the `Appointment`, and calls `prediction_service.prediction_record_for(symptoms)`. That call uses the in-memory predictor and returns a `Prediction` row. It never raises, so a model problem cannot block a booking.
-5. One transaction commits all three rows. A structured log event `appointment_created` records ids only: no names, phones or symptoms.
+4. `appointment_service.create_appointment()` reuses or creates the patient document, then calls `prediction_service.prediction_record_for(symptoms)`. That call uses the in-memory predictor and returns the prediction sub-document. It never raises, so a model problem cannot block a booking.
+5. A single `insert_one` writes the appointment **with its prediction embedded**, so that write is atomic. A structured log event `appointment_created` records ids only: no names, phones or symptoms.
 6. The JSON response updates the UI. TanStack Query invalidates the cached `appointments` queries, so both dashboards refresh.
 
-## Data model
+## Data model (MongoDB)
 
 ```
-users ──────────────┐ created_by                 ┌──── doctor_id ───── users
-                    ▼                            │
-patients 1 ──── * appointments 1 ──── 0..1 predictions
-                        │
-                        └──── 1 ──── * prescriptions
+users ─────────────┐ created_by_id                ┌──── doctor_id ───── users
+                   ▼                              │
+patients 1 ──── * appointments ──── 1 ──── * prescriptions
+                   └─ prediction  (embedded sub-document)
+counters           one document per collection: {_id: "appointments", seq: 13}
 ```
 
-| Table | Why it exists | Key fields |
-| --- | --- | --- |
-| `users` | Staff accounts for auth and audit ("booked by", "prescribed by") | `username` (unique), `password_hash`, `role`, `is_active` |
-| `patients` | A person seen more than once should be one record; enables visit history and returning-patient search | `full_name`, `phone` (indexed, not unique: families share numbers) |
-| `appointments` | The visit: when, what type, which state, which symptoms | `scheduled_at`, `appointment_type`, `status`, `symptoms` (JSON list) |
-| `predictions` | Model output is kept **separate from clinician data** and stamped with `model_version`, so every suggestion is traceable to the model that made it | `status`, `predicted_disease`, `confidence`, `top_predictions` (JSON), `unknown_symptoms`, `model_version` |
-| `prescriptions` | Doctor-authored, one-to-many per visit (a revised prescription is a new row, not an edit) | `doctor_id`, `diagnosis`, `medications` (JSON list of `{name, dosage, instructions}`), `notes` |
+| Collection | Why it exists | Key fields | Indexes |
+| --- | --- | --- | --- |
+| `users` | Staff accounts for auth and audit ("booked by", "prescribed by") | `username`, `password_hash`, `role`, `is_active` | `username` unique |
+| `patients` | A person seen more than once is one record; enables visit history and returning-patient search | `full_name`, `full_name_lower`, `phone` | (`full_name_lower`, `phone`) unique; `phone` |
+| `appointments` | The visit: when, what type, which state, which symptoms, **plus the AI suggestion embedded as `prediction`** | `patient_id`, `scheduled_at`, `appointment_type`, `status`, `symptoms` (array), `prediction` (sub-document), `prescription_count` | `patient_id`, `status`, `scheduled_at`, `prediction.predicted_disease` |
+| `prescriptions` | Doctor-authored, one-to-many per visit (a revised prescription is a new document, not an edit) | `appointment_id`, `doctor_id`, `diagnosis`, `medications` (array of `{name, dosage, instructions}`), `notes` | `appointment_id` |
+| `counters` | Allocates short sequential ids | `seq` | — |
 
-All tables have `created_at` / `updated_at` (UTC).
+Every document has `created_at` / `updated_at` (UTC).
 
-**Why JSON columns for symptoms and medications?** They are always read and written as a whole with their parent, never queried relationally on their own. Symptom search uses a simple `LIKE` over the serialised list. A `symptoms` table with a many-to-many join would add three tables and joins for no current query. If the product needed symptom analytics, normalising them would be the next step.
+**Embed or reference?** The rule used: embed data that is written once with its parent and always read with it; reference data that has its own identity or grows.
+
+- The **prediction is embedded** in the appointment. It is created in the same moment, never edited, and shown wherever the appointment is shown. Embedding makes booking one atomic write and needs no join. It keeps its own `model_version` and `status`, so the AI output stays clearly separate from clinician data.
+- **Prescriptions are referenced** (their own collection). They have their own URL (`/api/prescriptions/:id/pdf`), their own author, and a visit can accumulate several.
+- **Patients are referenced.** They are shared by many appointments. The appointment also keeps a small **denormalised copy** (`patient_name`, `patient_name_lower`, `patient_phone`), so the doctor's queue can be searched and sorted by patient in one single-collection query. That is safe because patient details are never edited through the API.
+- `prescription_count` is kept on the appointment and incremented with `$inc` when a prescription is added, so the list view needs no extra lookup.
+
+**Why integer ids instead of ObjectIds?** Sequential ids keep the REST API exactly as it was (`/api/appointments/13`) and make document numbers readable (A-00013, RX-000003). A `counters` document per collection is incremented with `find_one_and_update($inc)`, which is atomic, so concurrent requests never get the same id.
+
+**Concurrency guards.** A status change is written with `find_one_and_update({_id, status: <status we validated>})`. If two people change the same appointment at once, the second update matches nothing and gets `409 CONCURRENT_UPDATE` instead of silently applying a transition that was only valid from the old state. The unique `(full_name_lower, phone)` index does the same for patient registration: a racing duplicate insert fails, and the service reuses the existing record.
 
 **Why no hard delete?** Clinical records should be auditable. Cancellation (`PATCH status=cancelled`, reversible) is the supported path.
 
@@ -82,18 +91,24 @@ Vite gives instant dev reloads and a proxy (`/api` → Flask), so there is no CO
 
 Flask stays because the project already used it, the ML stack is Python, and its app-factory plus blueprints pattern is small enough to explain in a sentence.
 
-### Why SQLite?
+### Why MongoDB (Atlas)?
 
-The goal is "clone, install, run" with persistence that survives restarts. SQLite is a file (`server/instance/ai_clinic.db`) with no server to install, it supports transactions and foreign keys, and it handles a single-clinic demo easily. `DATABASE_URL` accepts any SQLAlchemy URL, so moving to PostgreSQL is a configuration change plus a driver.
+The records are naturally **document-shaped**: an appointment with an array of symptoms and a nested AI result, and a prescription with a list of medication objects. In a relational schema these became JSON columns or extra join tables; in MongoDB they are plain arrays and sub-documents, stored exactly as the API returns them.
 
-### Why SQLAlchemy?
+- **Managed hosting.** A free MongoDB Atlas cluster gives a persistent, backed-up database with nothing to install, so the API itself is stateless and can run as several instances.
+- **Flexible model output.** Prediction fields such as top-k lists and warnings can grow without migrations, and each suggestion records the model version that produced it.
+- **Query needs are simple.** Filter by status or condition, date ranges, case-insensitive text search and group-by counts for the dashboard. Indexes and a small aggregation pipeline cover all of them.
 
-- ORM models are the **schema in code**: typed columns, relationships and `to_dict()` serialisers in one place.
-- Queries are parameterised, so there is no SQL injection. Search uses `.contains(..., autoescape=True)`, which treats user-typed `%` and `_` literally.
-- `selectinload` avoids N+1 queries when listing appointments with their patient, prediction and prescriptions.
-- The same code runs on SQLite and PostgreSQL.
+The trade-off: MongoDB does not enforce relationships or a schema. Here the API's validators are the schema, and the few cross-document invariants (unique patients, atomic ids, safe status transitions) are enforced with unique indexes and conditional updates, described above.
 
-Tables are created with `db.create_all()` at startup to keep setup to zero steps. A production system would manage schema changes with Alembic migrations (listed in future work).
+### Why PyMongo, not an ODM?
+
+PyMongo is the official driver and keeps every query visible: the filter dicts and aggregation pipelines in `services/` are exactly what runs on the server. An ODM (MongoEngine, Beanie) would add a second modelling layer to learn for five small collections. `models/` holds the document shapes and their JSON serialisers instead.
+
+- **Injection-safe search.** User text is passed through `re.escape()` before it is used in a `$regex`, so `.*` or `(` in the search box match literally and cannot become expensive patterns. Values are always sent as data, never assembled into query strings.
+- **Nulls last.** Sorting uses a small `$addFields`/`$sort` pipeline, so appointments without a prediction always sort last, whatever the direction.
+- **Stable API.** The client connects with MongoDB Stable API v1 (the same as `mongosh --apiVersion 1`), so server upgrades on Atlas cannot change command behaviour under the app.
+- **Tests.** The suite runs on `mongomock`, an in-memory emulator, by default, and against a real server with `TEST_MONGODB_URI`. It passes both ways.
 
 ### Why keep the RandomForest?
 
@@ -130,10 +145,10 @@ The PDF is generated from a **stored, doctor-authored prescription** (`GET /api/
 
 | Concern | Implementation |
 | --- | --- |
-| Configuration | `app/config.py` reads env vars (`.env` at repo root via python-dotenv). Development, testing and production classes. Production refuses to start without a ≥ 32-char `JWT_SECRET`. |
+| Configuration | `app/config.py` reads env vars (`.env` at repo root via python-dotenv). Development, testing and production classes. The app refuses to start without `MONGODB_URI`, and production also requires a ≥ 32-char `JWT_SECRET`. If the cluster is unreachable at startup, the API still starts and reports `database: unavailable` on `/api/health`. |
 | Validation | `utils/validators.py`: explicit functions returning cleaned data or `ValidationError` with per-field details. Unknown fields on `PATCH` are rejected (no mass assignment). |
-| Errors | `errors.py`: an `APIError` hierarchy mapped to status codes. HTTP exceptions become JSON. Unexpected exceptions are logged with a stack trace and returned as a generic 500. |
-| Logging | `logging_config.py`: text locally, one JSON object per line with `LOG_FORMAT=json`. Events include `app_started`, `model_loaded`, `model_load_failed`, `prediction_made`, `appointment_created`, `appointment_updated`, `prescription_created`, `pdf_generated`, `pdf_generation_failed`, `login_succeeded` and `login_failed`. Patient names, phones and symptoms are never logged. |
+| Errors | `errors.py`: an `APIError` hierarchy mapped to status codes. HTTP exceptions become JSON. MongoDB connection failures become `503 DATABASE_UNAVAILABLE`. Unexpected exceptions are logged with a stack trace and returned as a generic 500. |
+| Logging | `logging_config.py`: text locally, one JSON object per line with `LOG_FORMAT=json`. Events include `app_started`, `database_connected`, `database_unreachable`, `model_loaded`, `model_load_failed`, `prediction_made`, `appointment_created`, `appointment_updated`, `prescription_created`, `pdf_generated`, `pdf_generation_failed`, `login_succeeded` and `login_failed`. Patient names, phones and symptoms are never logged. |
 | Security headers | `X-Content-Type-Options: nosniff`, `X-Frame-Options: DENY`, `Referrer-Policy: no-referrer`, and `Cache-Control: no-store` on all API responses (patient data). |
 | CORS | Only for `/api/*` and only for origins in `CORS_ORIGINS`. |
 | Request size | `MAX_CONTENT_LENGTH` of 64 KB. |

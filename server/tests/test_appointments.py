@@ -1,7 +1,3 @@
-from app import create_app
-from app.extensions import db
-from app.models import User
-
 from .conftest import future
 
 
@@ -199,23 +195,46 @@ def test_patient_search(client, frontdesk, make_appointment):
     assert [p["full_name"] for p in client.get("/api/patients?q=00002", headers=frontdesk).json["data"]] == ["Bina Rao"]
 
 
-def test_appointments_persist_across_restarts(tmp_path):
-    db_url = f"sqlite:///{tmp_path / 'clinic.db'}"
-    app = create_app("testing", {"SQLALCHEMY_DATABASE_URI": db_url})
-    with app.app_context():
-        user = User(username="frontdesk1", full_name="Sarah Johnson", role="frontdesk")
-        user.set_password("desk-pass-123")
-        db.session.add(user)
-        db.session.commit()
-    client = app.test_client()
-    token = client.post("/api/auth/login", json={"username": "frontdesk1", "password": "desk-pass-123"}).json["data"]["token"]
-    client.post(
-        "/api/appointments",
-        json={"patient": {"full_name": "Asha Verma", "phone": "9876543210"}, "scheduled_at": future(), "appointment_type": "consultation", "symptoms": ["cough"]},
-        headers={"Authorization": f"Bearer {token}"},
-    )
+def test_search_treats_regex_characters_literally(client, doctor, make_appointment):
+    make_appointment(name="Asha Verma")
+    for q in (".*", "(", "a|b", "[a-z]+"):
+        res = client.get("/api/appointments", query_string={"q": q}, headers=doctor)
+        assert res.status_code == 200
+        assert res.json["meta"]["total"] == 0, q
 
-    restarted = create_app("testing", {"SQLALCHEMY_DATABASE_URI": db_url, "JWT_SECRET": app.config["JWT_SECRET"]})
-    res = restarted.test_client().get("/api/appointments", headers={"Authorization": f"Bearer {token}"})
-    assert res.json["meta"]["total"] == 1
-    assert res.json["data"][0]["patient"]["full_name"] == "Asha Verma"
+
+def test_confidence_sort_puts_missing_predictions_last(client, doctor, make_appointment):
+    make_appointment(name="No Prediction", phone="+91 90000 00009", symptoms=["back pain"])
+    make_appointment(name="Asha Verma")
+    for order in ("asc", "desc"):
+        rows = client.get(f"/api/appointments?sort=confidence&order={order}", headers=doctor).json["data"]
+        assert rows[-1]["patient"]["full_name"] == "No Prediction", order
+
+
+def test_prescription_count_tracks_new_prescriptions(client, doctor, make_appointment):
+    a = make_appointment()
+    for _ in range(2):
+        client.post(
+            "/api/prescriptions",
+            json={"appointment_id": a["id"], "diagnosis": "Common cold", "medications": [{"name": "Rest"}]},
+            headers=doctor,
+        )
+    listed = client.get("/api/appointments", headers=doctor).json["data"][0]
+    assert listed["prescription_count"] == 2
+
+
+def test_unreachable_database_starts_degraded_and_returns_503():
+    from app import create_app
+
+    # Nothing listens on port 1: the real PyMongo client times out quickly.
+    app = create_app("testing", {"MONGODB_URI": "mongodb://127.0.0.1:1", "MONGODB_TIMEOUT_MS": 200})
+    client = app.test_client()
+
+    health = client.get("/api/health")
+    assert health.status_code == 503
+    assert health.json["data"]["database"] == "unavailable"
+
+    res = client.post("/api/auth/login", json={"username": "doctor1", "password": "doctor-pass-123"})
+    assert res.status_code == 503
+    assert res.json["error"]["code"] == "DATABASE_UNAVAILABLE"
+    assert "127.0.0.1" not in res.get_data(as_text=True)  # no connection details leak to clients
