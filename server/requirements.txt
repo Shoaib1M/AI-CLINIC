@@ -1,11 +1,12 @@
 # Web API
 Flask==3.1.3
-Flask-SQLAlchemy==3.1.1
-SQLAlchemy==2.0.43
 flask-cors==6.0.5
 PyJWT==2.10.1
 python-dotenv==1.1.1
 gunicorn==23.0.0
+
+# Database (MongoDB / Atlas; dnspython for mongodb+srv:// URIs is a pymongo dependency)
+pymongo==4.10.1
 
 # ML (scikit-learn is pinned to the version the committed artifacts were trained with)
 scikit-learn==1.3.2

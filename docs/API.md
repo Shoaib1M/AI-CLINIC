@@ -33,11 +33,11 @@ All examples below are real responses captured from the running API. Some are sh
 | 403 | Authenticated, but the role may not do this | `FORBIDDEN` |
 | 404 | Unknown resource or route | `APPOINTMENT_NOT_FOUND`, `PATIENT_NOT_FOUND`, `PRESCRIPTION_NOT_FOUND`, `NOT_FOUND` |
 | 405 | Wrong HTTP method | `METHOD_NOT_ALLOWED` |
-| 409 | Valid request that conflicts with current state | `INVALID_STATUS_TRANSITION`, `APPOINTMENT_NOT_PENDING`, `APPOINTMENT_CANCELLED` |
+| 409 | Valid request that conflicts with current state | `INVALID_STATUS_TRANSITION`, `APPOINTMENT_NOT_PENDING`, `APPOINTMENT_CANCELLED`, `CONCURRENT_UPDATE` |
 | 413 | Body larger than 64 KB | `PAYLOAD_TOO_LARGE` |
 | 422 | Well-formed, but the model cannot use any of the symptoms | `NO_KNOWN_SYMPTOMS` |
 | 500 | Unexpected server error (details are logged, never returned) | `INTERNAL_ERROR`, `PDF_GENERATION_FAILED` |
-| 503 | Model artifacts not loaded | `MODEL_UNAVAILABLE` |
+| 503 | Model artifacts not loaded, or MongoDB unreachable | `MODEL_UNAVAILABLE`, `DATABASE_UNAVAILABLE` |
 
 **Authentication.** Send `Authorization: Bearer <token>` with the token from `POST /api/auth/login`. Tokens are HS256 JWTs and expire after `JWT_EXPIRES_MINUTES` (default 8 hours). The server reads the user's role from the database on every request, not from the token, so deactivating a user takes effect immediately.
 
@@ -186,7 +186,7 @@ Errors: `400 INVALID_INPUT` (all bad fields reported together), `401`, `403` (do
 
 | Query | Default | Meaning |
 | --- | --- | --- |
-| `q` | — | Case-insensitive match on patient name, phone, predicted disease or symptom. `%` and `_` are literal. |
+| `q` | — | Case-insensitive match on patient name, phone, predicted disease or symptom. Regex characters such as `.*` are matched literally. |
 | `status` | — | `pending`, `completed` or `cancelled` |
 | `disease` | — | Exact AI-suggested condition |
 | `date_from`, `date_to` | — | `YYYY-MM-DD`, inclusive, on `scheduled_at` |
@@ -240,6 +240,8 @@ Response: the updated appointment. Errors: `400`, `403` (e.g. front desk complet
 ```json
 { "error": { "code": "INVALID_STATUS_TRANSITION", "message": "Cannot change status from 'completed' to 'pending'." } }
 ```
+
+If two people change the same appointment at the same moment, the second request gets `409 CONCURRENT_UPDATE` instead of overwriting the first; reload and retry.
 
 ## Patients
 

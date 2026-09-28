@@ -14,19 +14,17 @@ bp = Blueprint("prescriptions", __name__)
 @require_auth("doctor")
 def create_prescription():
     data = validate_prescription(json_body())
-    prescription = prescription_service.create_prescription(data, g.current_user)
-    return ok(prescription.to_dict(), 201)
+    return ok(prescription_service.create_prescription(data, g.current_user), 201)
 
 
 @bp.get("/prescriptions/<int:prescription_id>")
 @require_auth("doctor", "frontdesk")
 def get_prescription(prescription_id: int):
-    return ok(prescription_service.get_prescription(prescription_id).to_dict())
+    return ok(prescription_service.get_prescription(prescription_id))
 
 
 @bp.get("/prescriptions/<int:prescription_id>/pdf")
 @require_auth("doctor", "frontdesk")
 def prescription_pdf(prescription_id: int):
-    prescription = prescription_service.get_prescription(prescription_id)
-    pdf, filename = prescription_service.render_pdf(prescription)
+    pdf, filename = prescription_service.render_pdf(prescription_id)
     return send_file(io.BytesIO(pdf), mimetype="application/pdf", as_attachment=True, download_name=filename)

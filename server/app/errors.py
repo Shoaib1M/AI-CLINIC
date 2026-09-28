@@ -8,6 +8,7 @@ Every error response has the shape:
 import logging
 
 from flask import jsonify
+from pymongo.errors import ConnectionFailure
 from werkzeug.exceptions import HTTPException
 
 logger = logging.getLogger(__name__)
@@ -93,8 +94,14 @@ def register_error_handlers(app) -> None:
         code = _HTTP_CODES.get(error.code, "HTTP_ERROR")
         return jsonify({"error": {"code": code, "message": error.description}}), error.code
 
+    @app.errorhandler(ConnectionFailure)  # includes server-selection timeouts
+    def handle_database_unavailable(error):
+        logger.error("database_unavailable", extra={"reason": str(error)[:300]})
+        body = ServiceUnavailable("The database is unreachable. Please try again shortly.", code="DATABASE_UNAVAILABLE")
+        return jsonify(body.to_dict()), 503
+
     @app.errorhandler(Exception)
     def handle_unexpected(error: Exception):
-        # Never leak internals (stack traces, SQL, file paths) to clients.
+        # Never leak internals (stack traces, queries, file paths) to clients.
         logger.exception("unhandled_exception")
         return jsonify(APIError().to_dict()), 500
