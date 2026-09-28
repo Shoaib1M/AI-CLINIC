@@ -31,6 +31,8 @@ class Mongo:
                 uri,
                 server_api=ServerApi("1"),  # Stable API, as with `mongosh --apiVersion 1`
                 serverSelectionTimeoutMS=app.config["MONGODB_TIMEOUT_MS"],
+                connectTimeoutMS=app.config["MONGODB_TIMEOUT_MS"],
+                socketTimeoutMS=app.config["MONGODB_SOCKET_TIMEOUT_MS"],
                 appname="ai-clinic",
             )
         app.extensions["mongo_client"] = client

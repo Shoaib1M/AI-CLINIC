@@ -6,6 +6,7 @@
 // - Notifies the auth layer on 401 so an expired session logs out cleanly.
 
 const BASE_URL = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+export const REQUEST_TIMEOUT_MS = 20_000
 
 let tokenGetter = () => null
 let unauthorizedHandler = () => {}
@@ -36,11 +37,25 @@ async function request(path, { method = 'GET', body, params, raw = false, auth =
   const token = auth ? tokenGetter() : null
   if (token) headers.Authorization = `Bearer ${token}`
 
+  // Never wait forever: if the API (or the database behind it) hangs, give up
+  // and show an error instead of an endless spinner.
+  const controller = new AbortController()
+  const timer = setTimeout(() => controller.abort(), REQUEST_TIMEOUT_MS)
   let response
   try {
-    response = await fetch(url, { method, headers, body: body === undefined ? undefined : JSON.stringify(body) })
-  } catch {
+    response = await fetch(url, {
+      method,
+      headers,
+      body: body === undefined ? undefined : JSON.stringify(body),
+      signal: controller.signal,
+    })
+  } catch (error) {
+    if (controller.signal.aborted) {
+      throw new ApiError(0, { code: 'TIMEOUT', message: 'The server took too long to respond. Please try again.' })
+    }
     throw new ApiError(0, { code: 'NETWORK_ERROR', message: 'Cannot reach the server. Is the API running?' })
+  } finally {
+    clearTimeout(timer)
   }
 
   if (!response.ok) {

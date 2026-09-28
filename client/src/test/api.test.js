@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import { api, ApiError, configureApi } from '../lib/api'
+import { api, ApiError, configureApi, REQUEST_TIMEOUT_MS } from '../lib/api'
 import { json } from './utils'
 
 afterEach(() => vi.unstubAllGlobals())
@@ -48,5 +48,22 @@ describe('api client', () => {
     vi.stubGlobal('fetch', vi.fn(() => Promise.reject(new TypeError('Failed to fetch'))))
     configureApi({ getToken: () => null, onUnauthorized: () => {} })
     await expect(api.health()).rejects.toMatchObject({ code: 'NETWORK_ERROR' })
+  })
+
+  it('gives up on a hung request instead of spinning forever', async () => {
+    vi.useFakeTimers()
+    try {
+      // A server that never answers: the promise only settles when the request is aborted.
+      vi.stubGlobal('fetch', vi.fn((url, { signal }) => new Promise((_, reject) => {
+        signal.addEventListener('abort', () => reject(new DOMException('Aborted', 'AbortError')))
+      })))
+      configureApi({ getToken: () => null, onUnauthorized: () => {} })
+
+      const pending = api.login('frontdesk1', 'pw').catch((e) => e)
+      await vi.advanceTimersByTimeAsync(REQUEST_TIMEOUT_MS)
+      await expect(pending).resolves.toMatchObject({ code: 'TIMEOUT' })
+    } finally {
+      vi.useRealTimers()
+    }
   })
 })

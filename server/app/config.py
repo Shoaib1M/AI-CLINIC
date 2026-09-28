@@ -39,7 +39,11 @@ class BaseConfig:
     # `or` (not a getenv default) so an empty value copied from .env.example counts as unset.
     MONGODB_URI = os.getenv("MONGODB_URI") or ""
     MONGODB_DB = os.getenv("MONGODB_DB") or "ai_clinic"
+    # How long to wait for the cluster (server selection and new connections), and
+    # for any single database operation. Without an operation timeout the driver
+    # waits forever on a connection that died silently (e.g. after a network switch).
     MONGODB_TIMEOUT_MS = int(os.getenv("MONGODB_TIMEOUT_MS") or 5000)
+    MONGODB_SOCKET_TIMEOUT_MS = int(os.getenv("MONGODB_SOCKET_TIMEOUT_MS") or 10000)
 
     JWT_SECRET = os.getenv("JWT_SECRET", "")
     JWT_ALGORITHM = "HS256"
