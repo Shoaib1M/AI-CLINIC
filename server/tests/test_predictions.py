@@ -45,6 +45,7 @@ def test_model_card_is_public(client):
     assert data["loaded"] is True
     assert data["algorithm"] == "RandomForestClassifier"
     assert "fever" in data["symptoms"]
+    assert data["symptom_aliases"]["body aches"] == "body ache"
     assert "Disease" not in data["classes"]  # regression: old CSV header bug
     assert len(data["classes"]) == 10
     assert data["evaluation"]["holdout"]["accuracy"] > 0.8

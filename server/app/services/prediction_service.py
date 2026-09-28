@@ -12,6 +12,7 @@ from flask import current_app
 
 from ..errors import ServiceUnavailable, UnprocessableInput
 from ..ml import DiseasePredictor, ModelArtifactError, NoKnownSymptomsError
+from ..ml.preprocessing import SYMPTOM_ALIASES
 from ..models import Prediction
 
 logger = logging.getLogger(__name__)
@@ -125,6 +126,7 @@ def model_info() -> dict:
         "sklearn_version": meta.get("sklearn_version"),
         "classes": predictor.classes,
         "symptoms": predictor.known_symptoms,
+        "symptom_aliases": SYMPTOM_ALIASES,
         "dataset": meta.get("dataset"),
         "evaluation": meta.get("evaluation"),
         "disclaimer": DISCLAIMER,
