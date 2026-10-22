@@ -6,6 +6,12 @@ import { HOME_ROUTE } from '../lib/constants'
 import { Logo } from '../components/layout/Logo'
 import { Spinner } from '../components/ui/States'
 
+// Matches DEMO_DOCTOR_PASSWORD / DEMO_FRONTDESK_PASSWORD in .env.example (used by `flask seed-demo`).
+const DEMO_ACCOUNTS = [
+  { role: 'Doctor', username: 'doctor1', password: 'Hello123' },
+  { role: 'Front desk', username: 'frontdesk1', password: 'World123' },
+]
+
 export default function Login() {
   const { login, isAuthenticated, user, notice } = useAuth()
   const navigate = useNavigate()
@@ -77,7 +83,29 @@ export default function Login() {
             </button>
           </form>
 
-          <p className="mt-6 text-xs text-slate-500">
+          <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-4">
+            <p className="text-xs font-medium text-slate-700">Demo accounts</p>
+            <p className="mt-0.5 text-xs text-slate-500">Click one to fill in the form.</p>
+            <ul className="mt-3 space-y-2">
+              {DEMO_ACCOUNTS.map((account) => (
+                <li key={account.username}>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setForm({ username: account.username, password: account.password })
+                      setError(null)
+                    }}
+                    className="flex w-full items-center justify-between rounded-md border border-slate-200 bg-white px-3 py-2 text-left text-xs hover:border-brand-300 hover:bg-brand-50"
+                  >
+                    <span className="font-medium text-slate-700">{account.role}</span>
+                    <span className="font-mono text-slate-500">{account.username} / {account.password}</span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <p className="mt-4 text-xs text-slate-500">
             Running locally? Accounts are created with <code className="rounded bg-slate-100 px-1 py-0.5">flask seed-demo</code> using the
             passwords you set in <code className="rounded bg-slate-100 px-1 py-0.5">.env</code>. See the README.
           </p>
